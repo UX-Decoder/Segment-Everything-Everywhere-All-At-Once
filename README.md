@@ -9,7 +9,7 @@ We emphasize $4$ important features of **SEEM** here.
 
 ## Comparison with SAM
 Compared with [SAM](https://arxiv.org/abs/2304.02643), SEEM has the following strengths. First, SEEM has a Unified prompt encoder that encode all visual and language prompts into a joint representation space. In consequence, SEEM has more general usage. It has potential to extend to custom prompts. Second, SEEM do very well on text to mask (grounding segmentation) and output semantic-aware predictions.
-![SEEM design](assets/compare_with_sam.jpg?raw=true)
+![Compare](assets/compare_with_sam.jpg?raw=true)
 This figure shows a comparison with concurrent work SAM on the level of interactions and semantics. The x-axis and y-axis denote the level of interaction and semantics, respectively. Three segmentation tasks are shown which are Open-set Segmentation, Edge detection, and Interactive Segmentation. They have different levels of interactions and semantics. For example, Open-set Segmentation usually requires a high level of semantics and a low level of interaction. Compared with SAM, our model covers a larger range in both interaction and semantics levels.
 ## :robot: Run click to mask demo
 <!-- should show an example image here -->
