@@ -7,3 +7,18 @@ We emphasize $4$ important features of **SEE** here.
 3. Interactive: dealmulti-round interactions with human because **SEE** has a memory prompt to store the session history;
 4. Semantic awareness: give a semantic label to any predicted mask;
 ![SEEM design](assets/compare_with_sam.jpg?raw=true)
+
+## :robot: Run click to mask demo
+<!-- should show an example image here -->
+## :golfing: Run text to mask demo
+<!-- should show an example image here -->
+## :skier: Run example image to mask demo
+<!-- should show an example image here -->
+## :cupid: Acknowledgements
+- [X-Decoder](https://github.com/microsoft/X-Decoder)
+
+## Citation
+If you find this project helpful for your research, please consider citing the following BibTeX entry.
+```BibTex
+
+```
