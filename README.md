@@ -16,16 +16,12 @@ With a simple click or stoke from the user, we can generate the masks and the co
 ## 🔥Text to mask
 ## 🔥Referring image to mask
 With a simple click or stroke on the referring image, the model is able to segment the objects with similar semantics on the target images.
-![SEEM design](assets/refer-elefant.png?raw=true)
-![SEEM design](assets/refer_river.png?raw=true)
+![example](assets/refer-elefant.png?raw=true)
+![example](assets/refer_river.png?raw=true)
 ## 🔥Combination of different prompts to mask
 
-## :robot: Run click to mask demo
-<!-- should show an example image here -->
-## :golfing: Run text to mask demo
-<!-- should show an example image here -->
-## :skier: Run example image to mask demo
-<!-- should show an example image here -->
+## 🔥Examples of different styles
+![example](assets/emoj.png?raw=true)
 ## Model
 ![SEEM design](assets/model.jpg?raw=true)
 ## Comparison with SAM
