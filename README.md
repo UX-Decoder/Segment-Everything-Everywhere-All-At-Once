@@ -1,6 +1,11 @@
 # 👀*SEEM:* Segment Everything Everywhere All at Once
-This paper presents **SEEM** that can Segment Everything Everywhere all at once. Our SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combination of prompts or generalize to custom prompts. 
-## :bulb: Highlight Extension Projects
+This paper presents **SEEM** that can **S**egment **E**verything **E**verywhere all at once. Our SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combination of prompts or generalize to custom prompts. 
+
+Paper link is avaliable at [here]()!
+
+Demo link is avaliable at [here]()!
+
+## :bulb: Highlights
 We emphasize $4$ important features of **SEEM** here.
 1. **Versatility**: work with various types of prompts, for example, clicks, boxes, polygon, scribble, text, and referring image;
 2. **Compositionaliy**: deal with any compositions of prompts;
@@ -22,28 +27,35 @@ SEEM can generate the mask with text input from the user, providing multi-modali
 ## 🔥Referring image to mask
 With a simple click or stroke on the referring image, the model is able to segment the objects with similar semantics on the target images.
 ![example](assets/ref_seg.png?raw=true)
-## 🔥Combination of different prompts to mask
+<!-- ## 🔥Combination of different prompts to mask -->
 
 ## 🔥Examples of different styles
-An example of an emoji.
-![example](assets/emoj.png?raw=true)
-An example of minecraft image.
+An example of segmenting an emoji.
+<div  align="center">    
+<img src="assets/emoj.png" width = "500" alt="assets/emoj.png" align=center />
+</div>
+
+An example of segmenting a minecraft image.
 ![example](assets/minecraft.png?raw=true)
 An example of using referring image on a popular teddy bear.
 ![example](assets/fox_v2.png?raw=true)
 ## Model
 ![SEEM design](assets/model.jpg?raw=true)
-<img src="assets/model.jpg" width = "300" height = "200" alt="assets/model.jpg" align=center />
+
 ## Comparison with SAM
 
 Compared with [SAM](https://arxiv.org/abs/2304.02643), SEEM has the following strengths. First, SEEM has a Unified prompt encoder that encode all visual and language prompts into a joint representation space. In consequence, SEEM has more general usage. It has potential to extend to custom prompts. Second, SEEM do very well on text to mask (grounding segmentation) and output semantic-aware predictions.
-![Compare](assets/compare.jpg?raw=true)
-This figure shows a comparison of our model with concurrent work SAM on the level of interactions and semantics. . The x-axis and y-axis denote the level of interaction and semantics, respectively. Three segmentation tasks are shown which are Open-set Segmentation, Edge detection, and Interactive Segmentation. They have different levels of interactions and semantics. For example, Open-set Segmentation usually requires a high level of semantics and does not require interaction. Compared with SAM, our model covers a larger range in both interaction and semantics levels. For example, SAM only supports limited interaction types like points and boxes and it does not support high-semantic tasks since it does not output semantic labels itself. Note that although we do not report edge detection results, our model can support it by simply converting masks to edges.
+<div  align="center">    
+<img src="assets/compare.jpg" width = "500" alt="assets/compare.jpg" align=center />
+</div>
+This figure shows a comparison of our model with concurrent work SAM on the level of interactions and semantics. The x-axis and y-axis denote the level of interaction and semantics, respectively. Three segmentation tasks are shown which are Open-set Segmentation, Edge detection, and Interactive Segmentation. They have different levels of interactions and semantics. For example, Open-set Segmentation usually requires a high level of semantics and does not require interaction. Compared with SAM, our model covers a larger range in both interaction and semantics levels. For example, SAM only supports limited interaction types like points and boxes and it does not support high-semantic tasks since it does not output semantic labels itself. Note that although we do not report edge detection results, our model can support it by simply converting masks to edges.
 ## :cupid: Acknowledgements
+We thank theese wonderful projects:
 - [X-Decoder](https://github.com/microsoft/X-Decoder)
 
-## Citation
+
+<!-- ## Citation (update when paper is available on arxiv)
 If you find this project helpful for your research, please consider citing the following BibTeX entry.
 ```BibTex
 
-```
+``` -->
