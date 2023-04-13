@@ -21,7 +21,12 @@ With a simple click or stroke on the referring image, the model is able to segme
 ## 🔥Combination of different prompts to mask
 
 ## 🔥Examples of different styles
+An example of an emoji.
 ![example](assets/emoj.png?raw=true)
+An example of minecraft image.
+![example](assets/minecraft.png?raw=true)
+An example of using referring image on a popular teddy bear.
+![example](assets/fox.png?raw=true)
 ## Model
 ![SEEM design](assets/model.jpg?raw=true)
 ## Comparison with SAM
