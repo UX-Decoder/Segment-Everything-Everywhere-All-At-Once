@@ -1,5 +1,5 @@
 # 👀*SEEM:* Segment Everything Everywhere All at Once
-This paper presents **SEEM** that can **S**egment **E**verything **E**verywhere all at once. Our SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combination of prompts or generalize to custom prompts. 
+We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **M**ulti-modal prompts all at once. SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combination of prompts or generalize to custom prompts!
 
 Paper link is avaliable at [here]()!
 
