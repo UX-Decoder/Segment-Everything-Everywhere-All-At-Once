@@ -22,10 +22,11 @@ With a simple click or stoke from the user, we can generate the masks and the co
 ## 🔥Text to mask
 SEEM can generate the mask with text input from the user, providing multi-modality interaction with human.
 
-<!-- ![example](assets/text.png?raw=true) -->
+![example](assets/text.png?raw=true)
+<!-- 
 <div  align="center">    
 <img src="assets/text.png" width = "700" alt="assets/text.png" align=center />
-</div>
+</div> -->
 
 ## 🔥Referring image to mask
 With a simple click or stroke on the referring image, the model is able to segment the objects with similar semantics on the target images.
@@ -42,7 +43,10 @@ An example of segmenting an emoji.
 </div>
 
 An example of segmenting a minecraft image.
-![example](assets/minecraft.png?raw=true)
+<div  align="center">    
+<img src="assets/minecraft.png" width = "700" alt="assets/minecraft.png" align=center />
+</div>
+<!-- ![example](assets/minecraft.png?raw=true) -->
 An example of using referring image on a popular teddy bear.
 ![example](assets/fox_v2.png?raw=true)
 ## Model
