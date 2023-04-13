@@ -34,6 +34,10 @@ With a simple click or stroke on the referring image, the model is able to segme
 ## Audio to mask
 We use Whiper to turn audio into text prompt to segment the object. Try it in our demo!
 
+<div  align="center">    
+<img src="assets/audio.png" width = "900" alt="assets/audio.png" align=center />
+</div>
+
 <!-- ## 🔥Combination of different prompts to mask -->
 
 ## 🔥Examples of different styles
@@ -46,12 +50,10 @@ An example of segmenting a minecraft image.
 <div  align="center">    
 <img src="assets/minecraft.png" width = "700" alt="assets/minecraft.png" align=center />
 </div>
-An example of using referring image on a popular teddy bear.
-<div  align="center">    
-<img src="assets/fox_v2.png" width = "1000" alt="assets/minecraft.png" align=center />
-</div>
 <!-- ![example](assets/minecraft.png?raw=true) -->
+An example of using referring image on a popular teddy bear.
 
+![example](assets/fox_v2.png?raw=true)
 ## Model
 ![SEEM design](assets/model.jpg?raw=true)
 
@@ -62,9 +64,19 @@ Compared with [SAM](https://arxiv.org/abs/2304.02643), SEEM has the following st
 <img src="assets/compare.jpg" width = "500" alt="assets/compare.jpg" align=center />
 </div>
 This figure shows a comparison of our model with concurrent work SAM on the level of interactions and semantics. The x-axis and y-axis denote the level of interaction and semantics, respectively. Three segmentation tasks are shown which are Open-set Segmentation, Edge detection, and Interactive Segmentation. They have different levels of interactions and semantics. For example, Open-set Segmentation usually requires a high level of semantics and does not require interaction. Compared with SAM, our model covers a larger range in both interaction and semantics levels. For example, SAM only supports limited interaction types like points and boxes and it does not support high-semantic tasks since it does not output semantic labels itself. Note that although we do not report edge detection results, our model can support it by simply converting masks to edges.
+
+## :bookmark_tabs: Catelog
+- [x] SEEM + Whisper Demo
+- [ ] SEEM + Whisper + Stable Diffusion Demo
+- [ ] Inference and installation code
+- [ ] Hugging Face Demo
+
 ## :cupid: Acknowledgements
 We thank theese wonderful projects:
 - [X-Decoder](https://github.com/microsoft/X-Decoder)
+
+
+
 
 
 <!-- ## Citation (update when paper is available on arxiv)
