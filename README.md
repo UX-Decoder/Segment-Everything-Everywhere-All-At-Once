@@ -6,7 +6,7 @@ Paper link is avaliable at [here]()!
 Demo link is avaliable at [here]()!
 
 ## :bulb: Highlights
-We emphasize $4$ important features of **SEEM** here.
+We emphasize **4** important features of **SEEM** here.
 1. **Versatility**: work with various types of prompts, for example, clicks, boxes, polygon, scribble, text, and referring image;
 2. **Compositionaliy**: deal with any compositions of prompts;
 3. **Interactive**: interact with user multi-rounds because **SEEM** has a memory prompt to store the session history;
@@ -22,11 +22,17 @@ With a simple click or stoke from the user, we can generate the masks and the co
 ## 🔥Text to mask
 SEEM can generate the mask with text input from the user, providing multi-modality interaction with human.
 
-![example](assets/text.png?raw=true)
+<!-- ![example](assets/text.png?raw=true) -->
+<div  align="center">    
+<img src="assets/text.png" width = "700" alt="assets/text.png" align=center />
+</div>
 
 ## 🔥Referring image to mask
 With a simple click or stroke on the referring image, the model is able to segment the objects with similar semantics on the target images.
 ![example](assets/ref_seg.png?raw=true)
+## Audio to mask
+We use Whiper to turn audio into text prompt to segment the object. Try it in our demo!
+
 <!-- ## 🔥Combination of different prompts to mask -->
 
 ## 🔥Examples of different styles
