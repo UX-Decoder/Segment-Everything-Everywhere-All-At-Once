@@ -9,7 +9,7 @@ Demo link is avaliable at [here]()!
 We emphasize **4** important features of **SEEM** here.
 1. **Versatility**: work with various types of prompts, for example, clicks, boxes, polygon, scribble, text, and referring image;
 2. **Compositionaliy**: deal with any compositions of prompts;
-3. **Interactive**: interact with user multi-rounds because **SEEM** has a memory prompt to store the session history;
+3. **Interactivity**: interact with user multi-rounds because **SEEM** has a memory prompt to store the session history;
 4. **Semantic awareness**: give a semantic label to any predicted mask;
 
 
