@@ -31,6 +31,10 @@ SEEM can generate the mask with text input from the user, providing multi-modali
 ## 🔥Referring image to mask
 With a simple click or stroke on the referring image, the model is able to segment the objects with similar semantics on the target images.
 ![example](assets/ref_seg.png?raw=true)
+
+SEEM also understands the spatial relationshio very well!
+![example](assets/spatial_relation.png?raw=true)
+
 ## 🔥Audio to mask
 We use Whiper to turn audio into text prompt to segment the object. Try it in our demo!
 
