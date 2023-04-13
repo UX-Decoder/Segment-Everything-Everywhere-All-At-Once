@@ -26,7 +26,7 @@ An example of an emoji.
 An example of minecraft image.
 ![example](assets/minecraft.png?raw=true)
 An example of using referring image on a popular teddy bear.
-![example](assets/fox.png?raw=true)
+![example](assets/fox_v2.png?raw=true)
 ## Model
 ![SEEM design](assets/model.jpg?raw=true)
 ## Comparison with SAM
