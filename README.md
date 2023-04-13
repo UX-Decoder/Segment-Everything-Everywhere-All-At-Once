@@ -12,12 +12,16 @@ We emphasize $4$ important features of **SEEM** here.
 A breif introduction of all the generic and interactive segmentation tasks we can do. Try our demo at xxx.
 ## 🔥Click, scribble to mask
 With a simple click or stoke from the user, we can generate the masks and the corresponding category labels for it.
+
 ![SEEM design](assets/click.png?raw=true)
 ## 🔥Text to mask
+SEEM can generate the mask with text input from the user, providing multi-modality interaction with human.
+
+![example](assets/text.png?raw=true)
+
 ## 🔥Referring image to mask
 With a simple click or stroke on the referring image, the model is able to segment the objects with similar semantics on the target images.
-![example](assets/refer-elefant.png?raw=true)
-![example](assets/refer_river.png?raw=true)
+![example](assets/ref.png?raw=true)
 ## 🔥Combination of different prompts to mask
 
 ## 🔥Examples of different styles
