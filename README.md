@@ -72,7 +72,7 @@ This figure shows a comparison of our model with concurrent work SAM on the leve
 - [ ] Hugging Face Demo
 
 ## :cupid: Acknowledgements
-We thank theese wonderful projects:
+We thank these wonderful projects:
 - [X-Decoder](https://github.com/microsoft/X-Decoder)
 
 
