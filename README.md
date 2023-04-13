@@ -59,7 +59,7 @@ An example of using referring image on a popular teddy bear.
 
 ![example](assets/fox_v2.png?raw=true)
 ## Model
-![SEEM design](assets/model.jpg?raw=true)
+![SEEM design](assets/model_xyz.jpg?raw=true)
 
 ## Comparison with SAM
 
