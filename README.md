@@ -1,5 +1,7 @@
 # 👀*SEEM:* Segment Everything Everywhere All at Once
-:apple:\[[Demo Route 1](https://36771ee9c49a4631.gradio.app)\]  :orange:\[[Demo Route 2](https://4a489753d0c824e0.gradio.app)\]     :kiwi_fruit:\[[Demo Route 3](https://8c52faee5271add1.gradio.app)\]   :grapes:\[[ArXiv](https://arxiv.org/pdf/2304.06718.pdf)\]
+:apple:\[[Demo Route 1](https://36771ee9c49a4631.gradio.app)\]  :orange:\[[Demo Route 2](https://4a489753d0c824e0.gradio.app)\]     :kiwi_fruit:\[[Demo Route 3](https://8c52faee5271add1.gradio.app)\]   :apple:\[[Demo Route 4](https://802323598a11a8d1.gradio.app)\]  :orange:\[[Demo Route 5](https://e3fa73a593ede8d7.gradio.app)\]     :kiwi_fruit:\[[Demo Route 6](https://33e20e469acbee02.gradio.app)\]  :grapes:\[[ArXiv](https://arxiv.org/pdf/2304.06718.pdf)\]
+
+If you find any of these demo link cannot run successfully multiple times (not beacause of your illegal prompt), please try another route. You are also welcome to post interesting demos in issues or giving a PR. Thanks!
 
 We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **M**ulti-modal prompts all at once. SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combinations of prompts or generalize to custom prompts!
 
