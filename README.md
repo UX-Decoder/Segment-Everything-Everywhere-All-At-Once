@@ -9,7 +9,7 @@ We introduce **SEEM**, a **S**egment **E**verything **E**verywhere all at Once *
 
 ##  :dart: Highlights
 
-Inspired by the appealing universal interface in LLM, we are advocating a universal multi-modal interface for visual understanding, in particular segmentation with a SINGLE model! We emphasize **4** important features of **SEEM** here.
+Inspired by the appealing universal interface in LLM, we are advocating a universal multi-modal interface for visual understanding, in particular segmentation with a **SINGLE MODEL**! We emphasize **4** important features of **SEEM** here.
 1. **Versatility**: work with various types of prompts, for example, clicks, boxes, polygon, scribble, text, and referring image;
 2. **Compositionaliy**: deal with any compositions of prompts;
 3. **Interactivity**: interact with user multi-rounds because **SEEM** has a memory prompt to store the session history;
