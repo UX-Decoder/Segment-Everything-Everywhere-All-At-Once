@@ -31,7 +31,7 @@ SEEM can generate the mask with text input from the user, providing multi-modali
 With a simple click or stroke on the referring image, the model is able to segment the objects with similar semantics on the target images.
 ![example](assets/ref_seg.png?raw=true)
 
-SEEM understands the spatial relationshio very well. Look at the three zebras!
+SEEM understands the spatial relationshio very well. Look at the three zebras! The segmented zebras have similar positions with the referred zeras. For example, when the left most zebra is referred on the upper row, the left most zebra on the bottom row is segmented.
 ![example](assets/spatial_relation.png?raw=true)
 
 SEEM understands the oil pastel paintings painted by :chipmunk:
