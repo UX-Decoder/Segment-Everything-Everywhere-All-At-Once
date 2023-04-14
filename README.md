@@ -15,6 +15,11 @@ Inspired by the appealing universal interface in LLMs, we are advocating univers
 ![SEEM design](assets/teaser.png?raw=true)
 A breif introduction of all the generic and interactive segmentation tasks we can do. Try our demo at 
 [[Demo Route 1](https://36771ee9c49a4631.gradio.app)\]  [[Demo Route 2](https://4a489753d0c824e0.gradio.app)\]    [[Demo Route 3](https://8c52faee5271add1.gradio.app)\].
+## 🔥How to use the demo
+- Upload an image;
+- Select at least one type of prompt you want (If you want to use referred region of another image please check "Example" and upload another image in referring image panel);
+- Remember to give prompt for each promt type you select or there will be an error (Rember to draw on referred image if you use it);
+- Click "Submit" and wait for a few seconds.
 ## 🔥Click, scribble to mask
 With a simple click or stoke from the user, we can generate the masks and the corresponding category labels for it.
 
