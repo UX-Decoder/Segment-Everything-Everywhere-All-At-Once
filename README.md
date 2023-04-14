@@ -1,7 +1,7 @@
 # 👀*SEEM:* Segment Everything Everywhere All at Once
 :apple:\[[Demo Route 1](https://36771ee9c49a4631.gradio.app)\]  :orange:\[[Demo Route 2](https://4a489753d0c824e0.gradio.app)\]     :kiwi_fruit:\[[Demo Route 3](https://8c52faee5271add1.gradio.app)\]   :pineapple:\[[Demo Route 4](https://802323598a11a8d1.gradio.app)\]  :peach:\[[Demo Route 5](https://e3fa73a593ede8d7.gradio.app)\]     :watermelon:\[[Demo Route 6](https://33e20e469acbee02.gradio.app)\]  :grapes:\[[ArXiv](https://arxiv.org/pdf/2304.06718.pdf)\]
 
-:mushroom: **Refresh the Demo first if you meet an error**! *If you find any of these demo link cannot run successfully multiple times (not beacause of your illegal prompt),* **please try another route.** *You are also welcome to post interesting demos in* **issues or giving a PR** *. Thanks!*
+:mushroom: **Refresh the Demo first if you meet an error**! *If you find any of these demo link cannot run successfully multiple times (not beacause of your illegal prompt),* **please try another route.** *You are also welcome to post interesting demos in* **issues or submitting a PR** *. Thanks!*
 
 We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **M**ulti-modal prompts all at once. SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combinations of prompts or generalize to custom prompts!
 
@@ -25,11 +25,11 @@ A breif introduction of all the generic and interactive segmentation tasks we ca
 [[Demo Route 1](https://36771ee9c49a4631.gradio.app)\]  [[Demo Route 2](https://4a489753d0c824e0.gradio.app)\]    [[Demo Route 3](https://8c52faee5271add1.gradio.app)\].
 
 ## 🔥How to use the demo
-- Try our default examples first.
+- Try our default examples first;
 - Upload an image;
-- Select at least one type of prompt you want (If you want to use referred region of another image please check "Example" and upload another image in referring image panel);
-- Remember to give prompt for each promt type you select or there will be an error (Rember to draw on referred image if you use it);
-- Our model by defualt has a **vocabulary** of COCO 80 categories, others will be classified to 'others' or misclassifed. If you wanna segment using open-vocabulary labels, put the text label in 'text' button after drawing sribbles.
+- Select at least one type of prompt of your choice (If you want to use referred region of another image please check "Example" and upload another image in referring image panel);
+- Remember to provide the actual prompt for each promt type you select, otherwise you will meet an error (e.g., rember to draw on the referring image);
+- Our model by defualt support the **vocabulary** of COCO 80 categories, others will be classified to 'others' or misclassifed. If you wanna segment using open-vocabulary labels, include the text label in 'text' button after drawing sribbles.
 - Click "Submit" and wait for a few seconds.
 
 ## 🔥An interesting example
@@ -56,7 +56,7 @@ SEEM can generate the mask with text input from the user, providing multi-modali
 With a simple click or stroke on the referring image, the model is able to segment the objects with similar semantics on the target images.
 ![example](assets/ref_seg.png?raw=true)
 
-SEEM understands the spatial relationship very well. Look at the three zebras! The segmented zebras have similar positions with the referred zeras. For example, when the left most zebra is referred on the upper row, the left most zebra on the bottom row is segmented.
+SEEM understands the spatial relationship very well. Look at the three zebras! The segmented zebras have similar positions with the referred zebras. For example, when the leftmost zebra is referred on the upper row, the leftmost zebra on the bottom row is segmented.
 ![example](assets/spatial_relation.png?raw=true)
 
 SEEM understands the oil pastel paintings painted by :chipmunk:
@@ -76,7 +76,7 @@ We use Whiper to turn audio into text prompt to segment the object. Try it in ou
 <!-- ## 🔥Combination of different prompts to mask -->
 
 ## 🔥Examples of different styles
-An example of segmenting a emoji.
+An example of segmenting a meme.
 <div  align="center">    
 <img src="assets/emoj.png" width = "500" alt="assets/emoj.png" align=center />
 </div>
@@ -99,7 +99,7 @@ An example of using referring image on a popular teddy bear.
 ![SEEM design](assets/model.png?raw=true)
 
 ## Comparison with SAM
-In the following figure, we compare the levels of interaction and semantics of three segmentation tasks (edge detection, open-set, and interactive segmentation). Open-set Segmentation usually requires a high level of semantics and does not require interaction. Compared with [SAM](https://arxiv.org/abs/2304.02643), SEEM covers a larger range in both interaction and semantics levels.  For example, SAM only supports limited interaction types like points and boxes, while misses high-semantic tasks since it does not output semantic labels itself. The reasons are: First, SEEM has a unified prompt encoder that encodes all visual and language prompts into a joint representation space. In consequence, SEEM can support more general usages. It has potential to extend to custom prompts. Second, SEEM works very well on text to mask (grounding segmentation) and outputs semantic-aware predictions.
+In the following figure, we compare the levels of interaction and semantics of three segmentation tasks (edge detection, open-set, and interactive segmentation). Open-set Segmentation usually requires a high level of semantics and does not require interaction. Compared with [SAM](https://arxiv.org/abs/2304.02643), SEEM covers a wider range of interaction and semantics levels.  For example, SAM only supports limited interaction types like points and boxes, while misses high-semantic tasks since it does not output semantic labels itself. The reasons are: First, SEEM has a unified prompt encoder that encodes all visual and language prompts into a joint representation space. In consequence, SEEM can support more general usages. It has potential to extend to custom prompts. Second, SEEM works very well on text to mask (grounding segmentation) and outputs semantic-aware predictions.
 <div  align="center">    
 <img src="assets/compare.jpg" width = "500" alt="assets/compare.jpg" align=center />
 </div>
