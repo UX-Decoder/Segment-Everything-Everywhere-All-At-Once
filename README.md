@@ -16,9 +16,11 @@ Inspired by the appealing universal interface in LLMs, we are advocating univers
 A breif introduction of all the generic and interactive segmentation tasks we can do. Try our demo at 
 [[Demo Route 1](https://36771ee9c49a4631.gradio.app)\]  [[Demo Route 2](https://4a489753d0c824e0.gradio.app)\]    [[Demo Route 3](https://8c52faee5271add1.gradio.app)\].
 ## 🔥How to use the demo
+- Try our default examples first.
 - Upload an image;
 - Select at least one type of prompt you want (If you want to use referred region of another image please check "Example" and upload another image in referring image panel);
 - Remember to give prompt for each promt type you select or there will be an error (Rember to draw on referred image if you use it);
+- Our model by defualt has a **vocabulary** of COCO 80 categories, others will be classified to 'others' or misclassifed. If you wanna segment using open-vocabulary labels, put the text label in 'text' button after drawing sribbles.
 - Click "Submit" and wait for a few seconds.
 
 ## 🔥An interesting example
