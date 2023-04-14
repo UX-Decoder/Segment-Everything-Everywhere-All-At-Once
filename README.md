@@ -17,6 +17,12 @@ Inspired by the appealing universal interface in LLMs, we are advocating univers
 ![SEEM design](assets/teaser_new.png?raw=true)
 A breif introduction of all the generic and interactive segmentation tasks we can do. Try our demo at 
 [[Demo Route 1](https://36771ee9c49a4631.gradio.app)\]  [[Demo Route 2](https://4a489753d0c824e0.gradio.app)\]    [[Demo Route 3](https://8c52faee5271add1.gradio.app)\].
+
+## Other awsome projects you may want to follow:
+[Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything.
+[SAM](https://github.com/facebookresearch/segment-anything/) : Strong generic segmentation methods.
+[X-Decoder](https://github.com/microsoft/X-Decoder) : Generic decoder that can do multiple tasks with one model only.
+
 ## 🔥How to use the demo
 - Try our default examples first.
 - Upload an image;
@@ -87,9 +93,6 @@ An example of segmenting a minecraft image.
 An example of using referring image on a popular teddy bear.
 
 ![example](assets/fox_v2.png?raw=true)
-
-## 💡 Highlight Extension Projects
-[Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything.
 
 ## Model
 ![SEEM design](assets/model.png?raw=true)
