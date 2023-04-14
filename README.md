@@ -19,9 +19,9 @@ A breif introduction of all the generic and interactive segmentation tasks we ca
 [[Demo Route 1](https://36771ee9c49a4631.gradio.app)\]  [[Demo Route 2](https://4a489753d0c824e0.gradio.app)\]    [[Demo Route 3](https://8c52faee5271add1.gradio.app)\].
 
 ## Other awsome projects you may want to follow:
-[Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything.
-[SAM](https://github.com/facebookresearch/segment-anything/) : Strong generic segmentation methods.
-[X-Decoder](https://github.com/microsoft/X-Decoder) : Generic decoder that can do multiple tasks with one model only.
+- [Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything.
+- [SAM](https://github.com/facebookresearch/segment-anything/) : Strong generic segmentation methods.
+- [X-Decoder](https://github.com/microsoft/X-Decoder) : Generic decoder that can do multiple tasks with one model only.
 
 ## 🔥How to use the demo
 - Try our default examples first.
