@@ -20,6 +20,14 @@ A breif introduction of all the generic and interactive segmentation tasks we ca
 - Select at least one type of prompt you want (If you want to use referred region of another image please check "Example" and upload another image in referring image panel);
 - Remember to give prompt for each promt type you select or there will be an error (Rember to draw on referred image if you use it);
 - Click "Submit" and wait for a few seconds.
+
+## 🔥An interesting example
+An example of Transformers. The referred image is the truck form of Optimus Prime. Our model can always segment Optimus Prime in target images no matter which form it is in. Thanks Hongyang Li for this fun example.
+
+<div  align="center">    
+<img src="assets/transformers_gh.png" width = "700" alt="assets/transformers_gh.png" align=center />
+</div>
+
 ## 🔥Click, scribble to mask
 With a simple click or stoke from the user, we can generate the masks and the corresponding category labels for it.
 
@@ -76,11 +84,6 @@ An example of using referring image on a popular teddy bear.
 
 ![example](assets/fox_v2.png?raw=true)
 
-An example of Transformers. The referred image is the truck form of Optimus Prime. Our model can always segment Optimus Prime in target images no matter which form it is in. Thanks Hongyang Li for this fun example.
-
-<div  align="center">    
-<img src="assets/transformers_gh.png" width = "700" alt="assets/transformers_gh.png" align=center />
-</div>
 ## Model
 ![SEEM design](assets/model.png?raw=true)
 
