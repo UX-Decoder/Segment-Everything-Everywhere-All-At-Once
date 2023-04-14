@@ -14,7 +14,7 @@ Inspired by the appealing universal interface in LLMs, we are advocating univers
 4. **Semantic awareness**: give a semantic label to any predicted mask;
 
 
-![SEEM design](assets/teaser.png?raw=true)
+![SEEM design](assets/teaser_new.png?raw=true)
 A breif introduction of all the generic and interactive segmentation tasks we can do. Try our demo at 
 [[Demo Route 1](https://36771ee9c49a4631.gradio.app)\]  [[Demo Route 2](https://4a489753d0c824e0.gradio.app)\]    [[Demo Route 3](https://8c52faee5271add1.gradio.app)\].
 ## 🔥How to use the demo
