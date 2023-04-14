@@ -4,7 +4,8 @@
 We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **M**ulti-modal prompts all at once. SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combination of prompts or generalize to custom prompts!
 
 ## :bulb: Highlights
-We emphasize **4** important features of **SEEM** here.
+
+Inspired by the appealing universal interface in LLMs, we are advocating universal, interactive multi-modal interface for any types of segmentation with **ONE SINGLE MODEL**. We emphasize **4** important features of **SEEM** here.
 1. **Versatility**: work with various types of prompts, for example, clicks, boxes, polygon, scribble, text, and referring image;
 2. **Compositionaliy**: deal with any compositions of prompts;
 3. **Interactivity**: interact with user multi-rounds because **SEEM** has a memory prompt to store the session history;
@@ -30,13 +31,15 @@ SEEM can generate the mask with text input from the user, providing multi-modali
 With a simple click or stroke on the referring image, the model is able to segment the objects with similar semantics on the target images.
 ![example](assets/ref_seg.png?raw=true)
 
-SEEM seems understand the spatial relationshio very well. Look at the three zebras!
+SEEM understands the spatial relationshio very well. Look at the three zebras!
 ![example](assets/spatial_relation.png?raw=true)
 
-SEEM seems understand the oil pastel paintings painted by :chipmunk:
+SEEM understands the oil pastel paintings painted by :chipmunk:
 ![Picture1](https://user-images.githubusercontent.com/11957155/231908924-c8f46ee4-e3e9-4457-a860-f46716ae5c9a.png)
 
-
+## 🔥Referring image to video mask
+Without any training on video data, SEEM directly works for you to segment videos with whatever queries you specify!
+![example](assets/referring_video_visualize.png?raw=true)
 
 ## 🔥Audio to mask
 We use Whiper to turn audio into text prompt to segment the object. Try it in our demo!
