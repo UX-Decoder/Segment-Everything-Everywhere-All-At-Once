@@ -88,6 +88,9 @@ An example of using referring image on a popular teddy bear.
 
 ![example](assets/fox_v2.png?raw=true)
 
+## 💡 Highlight Extension Projects
+[Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything.
+
 ## Model
 ![SEEM design](assets/model.png?raw=true)
 
