@@ -1,20 +1,27 @@
 # 👀*SEEM:* Segment Everything Everywhere All at Once
-We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **M**ulti-modal prompts all at once. SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combination of prompts or generalize to custom prompts!
 
-Paper link is avaliable at [here]()!
+![SEEM design](assets/teaser.png?raw=true)
 
-Demo link is avaliable at [here]()!
+We introduce **SEEM**, a **S**egment **E**verything **E**verywhere all at Once **M**odel. **SEEM** allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combination of prompts or generalize to custom prompts!
 
-## :bulb: Highlights
+🔥 [Read our Paper!](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once)
+🔥 [Try the Demo!](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once)
+
+##  :dart: Highlights
 We emphasize **4** important features of **SEEM** here.
 1. **Versatility**: work with various types of prompts, for example, clicks, boxes, polygon, scribble, text, and referring image;
 2. **Compositionaliy**: deal with any compositions of prompts;
 3. **Interactivity**: interact with user multi-rounds because **SEEM** has a memory prompt to store the session history;
 4. **Semantic awareness**: give a semantic label to any predicted mask;
 
+## :bulb: Model
 
-![SEEM design](assets/teaser.png?raw=true)
-A breif introduction of all the generic and interactive segmentation tasks we can do. Try our demo at xxx.
+A breif overview of our model design:
+
+![SEEM design](assets/method_xyz.png?raw=true)
+
+<!-- ![SEEM design](assets/teaser.png?raw=true) -->
+
 ## 🔥Click, scribble to mask
 With a simple click or stoke from the user, we can generate the masks and the corresponding category labels for it.
 
@@ -58,8 +65,8 @@ An example of segmenting a minecraft image.
 An example of using referring image on a popular teddy bear.
 
 ![example](assets/fox_v2.png?raw=true)
-## Model
-![SEEM design](assets/method_xyz.png?raw=true)
+<!-- ## Model
+![SEEM design](assets/method_xyz.png?raw=true) -->
 
 ## Comparison with SAM
 
