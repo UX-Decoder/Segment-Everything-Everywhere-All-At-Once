@@ -57,9 +57,14 @@ We use Whiper to turn audio into text prompt to segment the object. Try it in ou
 <!-- ## 🔥Combination of different prompts to mask -->
 
 ## 🔥Examples of different styles
-An example of segmenting a meme.
+An example of segmenting a emoji.
 <div  align="center">    
 <img src="assets/emoj.png" width = "500" alt="assets/emoj.png" align=center />
+</div>
+
+An example of segmenting trees in cartoon style.
+<div  align="center">    
+<img src="assets/trees_text.png" width = "700" alt="assets/trees_text.png" align=center />
 </div>
 
 An example of segmenting a minecraft image.
