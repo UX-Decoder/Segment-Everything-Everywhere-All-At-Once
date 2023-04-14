@@ -71,7 +71,8 @@ An example of using referring image on a popular teddy bear.
 
 ![example](assets/fox_v2.png?raw=true)
 
-An example of Transformers. Thanks Hongyang Li for this fun example.
+An example of Transformers. The referred image is the truck form of Optimus Prime. Our model can always segment Optimus Prime in target images no matter which form it is in. Thanks Hongyang Li for this fun example.
+
 <div  align="center">    
 <img src="assets/transformers_gh.png" width = "700" alt="assets/transformers_gh.png" align=center />
 </div>
