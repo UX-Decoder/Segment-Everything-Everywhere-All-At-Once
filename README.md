@@ -68,10 +68,12 @@ An example of segmenting a minecraft image.
 </div>
 <!-- ![example](assets/minecraft.png?raw=true) -->
 An example of using referring image on a popular teddy bear.
+
 ![example](assets/fox_v2.png?raw=true)
+
 An example of Transformers. Thanks Hongyang Li for this fun example.
 <div  align="center">    
-<img src="assets/minecraft.png" width = "700" alt="assets/transformers_gh.png" align=center />
+<img src="assets/transformers_gh.png" width = "700" alt="assets/transformers_gh.png" align=center />
 </div>
 ## Model
 ![SEEM design](assets/model.png?raw=true)
