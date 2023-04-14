@@ -1,14 +1,14 @@
 # 👀*SEEM:* Segment Everything Everywhere All at Once
 :apple:\[[Demo Route 1](https://ab79f1361bb060f6.gradio.app)\]  :orange:\[[Demo Route 3](https://28d88f3bc59955d5.gradio.app)\]     :kiwi_fruit:\[[Demo Route 4](https://ddbd9f45c9f9af07.gradio.app)\]   :grapes:\[[ArXiv](https://arxiv.org/pdf/2212.11270.pdf)\]
 
-We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **M**ulti-modal prompts all at once. SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combination of prompts or generalize to custom prompts!
+We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **M**ulti-modal prompts all at once. SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combinations of prompts or generalize to custom prompts!
 
 ## :bulb: Highlights
 
-Inspired by the appealing universal interface in LLMs, we are advocating universal, interactive multi-modal interface for any types of segmentation with **ONE SINGLE MODEL**. We emphasize **4** important features of **SEEM** here.
-1. **Versatility**: work with various types of prompts, for example, clicks, boxes, polygon, scribble, text, and referring image;
+Inspired by the appealing universal interface in LLMs, we are advocating universal, interactive multi-modal interface for any types of segmentation with **ONE SINGLE MODEL**. We emphasize **4** important features of **SEEM** below.
+1. **Versatility**: work with various types of prompts, for example, clicks, boxes, polygons, scribbles, texts, and referring image;
 2. **Compositionaliy**: deal with any compositions of prompts;
-3. **Interactivity**: interact with user multi-rounds because **SEEM** has a memory prompt to store the session history;
+3. **Interactivity**: interact with user in multi-rounds, thanks to the memory prompt of **SEEM** to store the session history;
 4. **Semantic awareness**: give a semantic label to any predicted mask;
 
 
