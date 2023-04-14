@@ -31,7 +31,7 @@ SEEM can generate the mask with text input from the user, providing multi-modali
 With a simple click or stroke on the referring image, the model is able to segment the objects with similar semantics on the target images.
 ![example](assets/ref_seg.png?raw=true)
 
-SEEM understands the spatial relationshio very well. Look at the three zebras! The segmented zebras have similar positions with the referred zeras. For example, when the left most zebra is referred on the upper row, the left most zebra on the bottom row is segmented.
+SEEM understands the spatial relationship very well. Look at the three zebras! The segmented zebras have similar positions with the referred zeras. For example, when the left most zebra is referred on the upper row, the left most zebra on the bottom row is segmented.
 ![example](assets/spatial_relation.png?raw=true)
 
 SEEM understands the oil pastel paintings painted by :chipmunk:
@@ -51,7 +51,7 @@ We use Whiper to turn audio into text prompt to segment the object. Try it in ou
 <!-- ## 🔥Combination of different prompts to mask -->
 
 ## 🔥Examples of different styles
-An example of segmenting an emoji.
+An example of segmenting a meme.
 <div  align="center">    
 <img src="assets/emoj.png" width = "500" alt="assets/emoj.png" align=center />
 </div>
@@ -69,7 +69,7 @@ An example of using referring image on a popular teddy bear.
 
 ## Comparison with SAM
 
-Compared with [SAM](https://arxiv.org/abs/2304.02643), SEEM has the following strengths. First, SEEM has a Unified prompt encoder that encode all visual and language prompts into a joint representation space. In consequence, SEEM has more general usage. It has potential to extend to custom prompts. Second, SEEM do very well on text to mask (grounding segmentation) and output semantic-aware predictions.
+Compared with [SAM](https://arxiv.org/abs/2304.02643), SEEM has the following strengths. First, SEEM has a unified prompt encoder that encodes all visual and language prompts into a joint representation space. In consequence, SEEM can support more general usages. It has potential to extend to custom prompts. Second, SEEM works very well on text to mask (grounding segmentation) and outputs semantic-aware predictions.
 <div  align="center">    
 <img src="assets/compare.jpg" width = "500" alt="assets/compare.jpg" align=center />
 </div>
