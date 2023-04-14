@@ -38,7 +38,7 @@ SEEM understands the oil pastel paintings painted by :chipmunk:
 ![Picture1](https://user-images.githubusercontent.com/11957155/231908924-c8f46ee4-e3e9-4457-a860-f46716ae5c9a.png)
 
 ## 🔥Referring image to video mask
-Without any training on video data, SEEM directly works for you to segment videos with whatever queries you specify!
+No training on video data needed, SEEM works perfectly for you to segment videos with whatever queries you specify!
 ![example](assets/referring_video_visualize.png?raw=true)
 
 ## 🔥Audio to mask
