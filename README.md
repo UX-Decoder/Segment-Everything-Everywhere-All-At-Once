@@ -5,6 +5,11 @@
 
 We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **M**ulti-modal prompts all at once. SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combinations of prompts or generalize to custom prompts!
 
+## :bulb: Other awsome projects you may want to follow:
+- [Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything.
+- [SAM](https://github.com/facebookresearch/segment-anything/) : Strong generic segmentation methods.
+- [X-Decoder](https://github.com/microsoft/X-Decoder) : Generic decoder that can do multiple tasks with one model only.
+
 ## :bulb: Highlights
 
 Inspired by the appealing universal interface in LLMs, we are advocating universal, interactive multi-modal interface for any types of segmentation with **ONE SINGLE MODEL**. We emphasize **4** important features of **SEEM** below.
@@ -17,11 +22,6 @@ Inspired by the appealing universal interface in LLMs, we are advocating univers
 ![SEEM design](assets/teaser_new.png?raw=true)
 A breif introduction of all the generic and interactive segmentation tasks we can do. Try our demo at 
 [[Demo Route 1](https://36771ee9c49a4631.gradio.app)\]  [[Demo Route 2](https://4a489753d0c824e0.gradio.app)\]    [[Demo Route 3](https://8c52faee5271add1.gradio.app)\].
-
-## Other awsome projects you may want to follow:
-- [Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything.
-- [SAM](https://github.com/facebookresearch/segment-anything/) : Strong generic segmentation methods.
-- [X-Decoder](https://github.com/microsoft/X-Decoder) : Generic decoder that can do multiple tasks with one model only.
 
 ## 🔥How to use the demo
 - Try our default examples first.
