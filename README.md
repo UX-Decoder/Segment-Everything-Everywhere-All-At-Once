@@ -1,28 +1,20 @@
 # 👀*SEEM:* Segment Everything Everywhere All at Once
+We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **M**ulti-modal prompts all at once. SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combination of prompts or generalize to custom prompts!
 
-![SEEM design](assets/teaser.png?raw=true)
+Paper link is avaliable at [here]()!
 
-We introduce **SEEM**, a **S**egment **E**verything **E**verywhere all at Once **M**odel. **SEEM** allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combination of prompts or generalize to custom prompts!
+Demo link is avaliable at [here]()!
 
-🔥 [Read our Paper!](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once)
-🔥 [Try the Demo!](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once)
-
-##  :dart: Highlights
-
-Inspired by the appealing universal interface in LLM, we are advocating a universal multi-modal interface for visual understanding, in particular segmentation with a **SINGLE MODEL**! We emphasize **4** important features of **SEEM** here.
+## :bulb: Highlights
+We emphasize **4** important features of **SEEM** here.
 1. **Versatility**: work with various types of prompts, for example, clicks, boxes, polygon, scribble, text, and referring image;
 2. **Compositionaliy**: deal with any compositions of prompts;
 3. **Interactivity**: interact with user multi-rounds because **SEEM** has a memory prompt to store the session history;
 4. **Semantic awareness**: give a semantic label to any predicted mask;
 
-## :bulb: Model
 
-A breif overview of our model design:
-
-![SEEM design](assets/method_xyz.png?raw=true)
-
-<!-- ![SEEM design](assets/teaser.png?raw=true) -->
-
+![SEEM design](assets/teaser.png?raw=true)
+A breif introduction of all the generic and interactive segmentation tasks we can do. Try our demo at xxx.
 ## 🔥Click, scribble to mask
 With a simple click or stoke from the user, we can generate the masks and the corresponding category labels for it.
 
@@ -42,6 +34,11 @@ With a simple click or stroke on the referring image, the model is able to segme
 
 SEEM seems understand the spatial relationshio very well. Look at the three zebras!
 ![example](assets/spatial_relation.png?raw=true)
+
+SEEM seems understand the oil pastel paintings painted by :chipmunk:
+![Picture1](https://user-images.githubusercontent.com/11957155/231908924-c8f46ee4-e3e9-4457-a860-f46716ae5c9a.png)
+
+
 
 ## 🔥Audio to mask
 We use Whiper to turn audio into text prompt to segment the object. Try it in our demo!
@@ -66,8 +63,8 @@ An example of segmenting a minecraft image.
 An example of using referring image on a popular teddy bear.
 
 ![example](assets/fox_v2.png?raw=true)
-<!-- ## Model
-![SEEM design](assets/method_xyz.png?raw=true) -->
+## Model
+![SEEM design](assets/method_xyz.png?raw=true)
 
 ## Comparison with SAM
 
