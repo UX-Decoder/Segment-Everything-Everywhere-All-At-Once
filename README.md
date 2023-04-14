@@ -1,5 +1,5 @@
 # 👀*SEEM:* Segment Everything Everywhere All at Once
-:apple:\[[Demo Route 1](https://feeadca870d96846.gradio.app)\]  :orange:\[[Demo Route 2](https://b1b3205b655ef8fc.gradio.app)\]     :kiwi_fruit:\[[Demo Route 3](https://aac59b0f9e02e8e8.gradio.app)\]   :grapes:\[[ArXiv](https://arxiv.org/pdf/2304.06718.pdf)\]
+:apple:\[[Demo Route 1](https://36771ee9c49a4631.gradio.app)\]  :orange:\[[Demo Route 2](https://4a489753d0c824e0.gradio.app)\]     :kiwi_fruit:\[[Demo Route 3](https://8c52faee5271add1.gradio.app)\]   :grapes:\[[ArXiv](https://arxiv.org/pdf/2304.06718.pdf)\]
 
 We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **M**ulti-modal prompts all at once. SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combinations of prompts or generalize to custom prompts!
 
@@ -68,12 +68,11 @@ An example of using referring image on a popular teddy bear.
 ![SEEM design](assets/method_xyz.png?raw=true)
 
 ## Comparison with SAM
-
-Compared with [SAM](https://arxiv.org/abs/2304.02643), SEEM has the following strengths. First, SEEM has a unified prompt encoder that encodes all visual and language prompts into a joint representation space. In consequence, SEEM can support more general usages. It has potential to extend to custom prompts. Second, SEEM works very well on text to mask (grounding segmentation) and outputs semantic-aware predictions.
+In the following figure, we compare the levels of interaction and semantics of three segmentation tasks (edge detection, open-set, and interactive segmentation). Open-set Segmentation usually requires a high level of semantics and does not require interaction. Compared with [SAM](https://arxiv.org/abs/2304.02643), \ourmodel{} covers a larger range in both interaction and semantics levels.  For example, SAM only supports limited interaction types like points and boxes, while misses high-semantic tasks since it does not output semantic labels itself. The reasons are: First, SEEM has a unified prompt encoder that encodes all visual and language prompts into a joint representation space. In consequence, SEEM can support more general usages. It has potential to extend to custom prompts. Second, SEEM works very well on text to mask (grounding segmentation) and outputs semantic-aware predictions.
 <div  align="center">    
 <img src="assets/compare.jpg" width = "500" alt="assets/compare.jpg" align=center />
 </div>
-This figure shows a comparison of our model with concurrent work SAM on the level of interactions and semantics. The x-axis and y-axis denote the level of interaction and semantics, respectively. Three segmentation tasks are shown, including Open-set Segmentation, Edge detection, and Interactive Segmentation. These tasks have different levels of interactions and semantics. For example, Open-set Segmentation usually requires a high level of semantics and does not require interaction. Compared with SAM, our model covers a wider range of interaction and semantics levels. For example, SAM only supports limited interaction types like points and boxes, while misses high-semantic tasks since it does not output semantic labels itself. Note that although we do not report edge detection results, our model can support it by simply converting masks to edges.
+<!-- This figure shows a comparison of our model with concurrent work SAM on the level of interactions and semantics. The x-axis and y-axis denote the level of interaction and semantics, respectively. Three segmentation tasks are shown, including Open-set Segmentation, Edge detection, and Interactive Segmentation. These tasks have different levels of interactions and semantics. For example, Open-set Segmentation usually requires a high level of semantics and does not require interaction. Compared with SAM, our model covers a wider range of interaction and semantics levels. For example, SAM only supports limited interaction types like points and boxes, while misses high-semantic tasks since it does not output semantic labels itself. Note that although we do not report edge detection results, our model can support it by simply converting masks to edges. -->
 
 ## :bookmark_tabs: Catelog
 - [x] SEEM + Whisper Demo
