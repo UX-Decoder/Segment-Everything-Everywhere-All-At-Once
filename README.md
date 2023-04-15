@@ -7,7 +7,7 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 
 :bulb: **Other awsome projects you may want to follow:**
 
-1.[X-Decoder](https://github.com/microsoft/X-Decoder) : Generic decoder that can do multiple tasks with one model only；
+1.[X-Decoder](https://github.com/microsoft/X-Decoder) : Generic decoder that can do multiple tasks with one model only；**And we built SEEM based on X-Decoder codebase**.
 
 2.[Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything；
 
