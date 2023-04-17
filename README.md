@@ -1,5 +1,5 @@
 # 👀*SEEM:* Segment Everything Everywhere All at Once
-:apple:\[[Demo Route 1](https://36771ee9c49a4631.gradio.app)\]  :orange:\[[Demo Route 2](https://4a489753d0c824e0.gradio.app)\]     :kiwi_fruit:\[[Demo Route 3](https://8c52faee5271add1.gradio.app)\]   :pineapple:\[[Demo Route 4](https://802323598a11a8d1.gradio.app)\]  :peach:\[[Demo Route 5](https://e3fa73a593ede8d7.gradio.app)\]     :watermelon:\[[Demo Route 6](https://33e20e469acbee02.gradio.app)\]  :grapes:\[[ArXiv](https://arxiv.org/pdf/2304.06718.pdf)\]
+:apple:\[[Demo Route 1](https://75769e2dbddf02cb.gradio.app)\]  :orange:\[[Demo Route 2](https://19f4d375cd275235.gradio.app)\] :grapes:\[[ArXiv](https://arxiv.org/pdf/2304.06718.pdf)\]
 
 :mushroom: **Refresh the Demo first if you meet an error**! *If you find any of these demo link cannot run successfully multiple times (not beacause of your illegal prompt),* **please try another route.** *You are also welcome to post interesting demos in* **issues or submitting a PR** *. Thanks!*
 
