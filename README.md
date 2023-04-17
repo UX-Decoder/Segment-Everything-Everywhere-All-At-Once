@@ -1,8 +1,6 @@
 # 👀*SEEM:* Segment Everything Everywhere All at Once
 :apple:\[[Demo](https://huggingface.co/spaces/xdecoder/SEEM)\] :grapes:\[[ArXiv](https://arxiv.org/pdf/2304.06718.pdf)\]
 
-:mushroom: **Refresh the Demo first if you meet an error**! *If you find any of these demo link cannot run successfully multiple times (not beacause of your illegal prompt),* **please try another route.** *You are also welcome to post interesting demos in* **issues or submitting a PR** *. Thanks!*
-
 We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **M**ulti-modal prompts all at once. SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combinations of prompts or generalize to custom prompts!
 
 :bulb: **Other awsome projects you may want to follow:**
@@ -23,8 +21,7 @@ Inspired by the appealing universal interface in LLMs, we are advocating univers
 
 
 ![SEEM design](assets/teaser_new.png?raw=true)
-A breif introduction of all the generic and interactive segmentation tasks we can do. Try our demo at 
-[[Demo Route 1](https://36771ee9c49a4631.gradio.app)\]  [[Demo Route 2](https://4a489753d0c824e0.gradio.app)\]    [[Demo Route 3](https://8c52faee5271add1.gradio.app)\].
+A breif introduction of all the generic and interactive segmentation tasks we can do.
 
 ## 🔥How to use the demo
 - Try our default examples first;
