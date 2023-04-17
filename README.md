@@ -1,5 +1,5 @@
 # 👀*SEEM:* Segment Everything Everywhere All at Once
-:apple:\[[Demo Route 1](https://75769e2dbddf02cb.gradio.app)\]  :orange:\[[Demo Route 2](https://19f4d375cd275235.gradio.app)\] :grapes:\[[ArXiv](https://arxiv.org/pdf/2304.06718.pdf)\]
+:apple:\[[Demo](https://huggingface.co/spaces/xdecoder/SEEM)\] :grapes:\[[ArXiv](https://arxiv.org/pdf/2304.06718.pdf)\]
 
 :mushroom: **Refresh the Demo first if you meet an error**! *If you find any of these demo link cannot run successfully multiple times (not beacause of your illegal prompt),* **please try another route.** *You are also welcome to post interesting demos in* **issues or submitting a PR** *. Thanks!*
 
@@ -116,6 +116,7 @@ In the following figure, we compare the levels of interaction and semantics of t
 ## :cupid: Acknowledgements
 We thank these wonderful projects:
 - [X-Decoder](https://github.com/microsoft/X-Decoder)
+- We appreciate hugging face for the gpu support on demo!
 
 
 
