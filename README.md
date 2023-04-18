@@ -1,15 +1,15 @@
 # 👀*SEEM:* Segment Everything Everywhere All at Once
-:apple:\[[Demo](https://huggingface.co/spaces/xdecoder/SEEM)\] :grapes:\[[ArXiv](https://arxiv.org/pdf/2304.06718.pdf)\]
+:grapes:\[[ArXiv](https://arxiv.org/pdf/2304.06718.pdf)\] &nbsp; :apple:\[[Hugging Face Demo](https://huggingface.co/spaces/xdecoder/SEEM)\] 
 
 We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **M**ulti-modal prompts all at once. SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combinations of prompts or generalize to custom prompts!
 
 :bulb: **Other awsome projects you may want to follow:**
 
-1.[X-Decoder](https://github.com/microsoft/X-Decoder) : Generic decoder that can do multiple tasks with one model only；**And we built SEEM based on X-Decoder codebase**.
+* [X-Decoder](https://github.com/microsoft/X-Decoder) : Generic decoder that can do multiple tasks with one model only；**And we built SEEM based on X-Decoder codebase**.
 
-2.[Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything；
+* [Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything；
 
-3.[Openseed](https://github.com/IDEA-Research/OpenSeeD) : Strong open-set segmentation methods.
+* [OpenSeed](https://github.com/IDEA-Research/OpenSeeD) : Strong open-set segmentation methods.
 
 ## :bulb: Highlights
 
