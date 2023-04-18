@@ -108,7 +108,7 @@ In the following figure, we compare the levels of interaction and semantics of t
 - [x] SEEM + Whisper Demo
 - [ ] SEEM + Whisper + Stable Diffusion Demo
 - [ ] Inference and installation code
-- [] Hugging Face Demo
+- [x] Hugging Face Demo
 
 ## :cupid: Acknowledgements
 We thank these wonderful projects:
