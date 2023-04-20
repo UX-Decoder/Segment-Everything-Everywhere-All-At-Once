@@ -24,7 +24,7 @@ Inspired by the appealing universal interface in LLMs, we are advocating univers
 ![SEEM design](assets/teaser_new.png?raw=true)
 A breif introduction of all the generic and interactive segmentation tasks we can do.
 
-## 🔥How to use the demo
+## :unicorn: How to use the demo
 - Try our default examples first;
 - Upload an image;
 - Select at least one type of prompt of your choice (If you want to use referred region of another image please check "Example" and upload another image in referring image panel);
@@ -32,18 +32,18 @@ A breif introduction of all the generic and interactive segmentation tasks we ca
 - Our model by defualt support the **vocabulary** of COCO 80 categories, others will be classified to 'others' or misclassifed. If you wanna segment using open-vocabulary labels, include the text label in 'text' button after drawing sribbles.
 - Click "Submit" and wait for a few seconds.
 
-## 🔥An interesting example
+## :volcano: An interesting example
 An example of Transformers. The referred image is the truck form of Optimus Prime. Our model can always segment Optimus Prime in target images no matter which form it is in. Thanks Hongyang Li for this fun example.
 
 <div  align="center">    
 <img src="assets/transformers_gh.png" width = "700" alt="assets/transformers_gh.png" align=center />
 </div>
 
-## 🔥Click, scribble to mask
+## :camping: Click, scribble to mask
 With a simple click or stoke from the user, we can generate the masks and the corresponding category labels for it.
 
 ![SEEM design](assets/click.png?raw=true)
-## 🔥Text to mask
+## :mountain_snow: Text to mask
 SEEM can generate the mask with text input from the user, providing multi-modality interaction with human.
 
 ![example](assets/text.png?raw=true)
@@ -52,30 +52,27 @@ SEEM can generate the mask with text input from the user, providing multi-modali
 <img src="assets/text.png" width = "700" alt="assets/text.png" align=center />
 </div> -->
 
-## 🔥Referring image to mask
+## :mosque: Referring image to mask
 With a simple click or stroke on the referring image, the model is able to segment the objects with similar semantics on the target images.
 ![example](assets/ref_seg.png?raw=true)
 
 SEEM understands the spatial relationship very well. Look at the three zebras! The segmented zebras have similar positions with the referred zebras. For example, when the leftmost zebra is referred on the upper row, the leftmost zebra on the bottom row is segmented.
 ![example](assets/spatial_relation.png?raw=true)
 
-SEEM understands the oil pastel paintings painted by :chipmunk:
-![Picture1](https://user-images.githubusercontent.com/11957155/231908924-c8f46ee4-e3e9-4457-a860-f46716ae5c9a.png)
-
-## 🔥Referring image to video mask
+## :blossom: Referring image to video mask
 No training on video data needed, SEEM works perfectly for you to segment videos with whatever queries you specify!
 ![example](assets/referring_video_visualize.png?raw=true)
 
-## 🔥Audio to mask
+## :sunflower: Audio to mask
 We use Whiper to turn audio into text prompt to segment the object. Try it in our demo!
 
 <div  align="center">    
 <img src="assets/audio.png" width = "900" alt="assets/audio.png" align=center />
 </div>
 
-<!-- ## 🔥Combination of different prompts to mask -->
+<!-- ## 🔥 Combination of different prompts to mask -->
 
-## 🔥Examples of different styles
+## 🔥 Examples of different styles
 An example of segmenting a meme.
 <div  align="center">    
 <img src="assets/emoj.png" width = "500" alt="assets/emoj.png" align=center />
@@ -112,8 +109,6 @@ In the following figure, we compare the levels of interaction and semantics of t
 - [x] Hugging Face Demo
 
 ## :cupid: Acknowledgements
-We thank these wonderful projects:
-- [X-Decoder](https://github.com/microsoft/X-Decoder)
 - We appreciate hugging face for the gpu support on demo!
 
 
