@@ -13,7 +13,7 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 * [OpenSeed](https://github.com/IDEA-Research/OpenSeeD) : Strong open-set segmentation methods.
 
 ## :rocket: Updates
-* Try our [Video Demo (Beta)](https://58ea5cf33ee3fdb3.gradio.app) on referring video object segmentation.
+* Try our [Video Demo (Beta)](https://653f93e5e2e87ef5.gradio.app/) on referring video object segmentation.
 ![ezgif com-video-to-gif](https://user-images.githubusercontent.com/11957155/233255289-35c0c1e2-35f7-48e4-a7e9-68da50c839d3.gif)
 
 ## :bulb: Highlights
@@ -23,7 +23,6 @@ Inspired by the appealing universal interface in LLMs, we are advocating univers
 2. **Compositionaliy**: deal with any compositions of prompts;
 3. **Interactivity**: interact with user in multi-rounds, thanks to the memory prompt of **SEEM** to store the session history;
 4. **Semantic awareness**: give a semantic label to any predicted mask;
-
 
 ![SEEM design](assets/teaser_new.png?raw=true)
 A breif introduction of all the generic and interactive segmentation tasks we can do.
