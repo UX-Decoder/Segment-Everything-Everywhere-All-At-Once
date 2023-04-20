@@ -12,6 +12,10 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 
 * [OpenSeed](https://github.com/IDEA-Research/OpenSeeD) : Strong open-set segmentation methods.
 
+## :rocket: Updates
+* Try our [Video Demo (Beta)](https://adca3070836938f5.gradio.app) on referring image segmentation.
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/11957155/233255289-35c0c1e2-35f7-48e4-a7e9-68da50c839d3.gif)
+
 ## :bulb: Highlights
 
 Inspired by the appealing universal interface in LLMs, we are advocating universal, interactive multi-modal interface for any types of segmentation with **ONE SINGLE MODEL**. We emphasize **4** important features of **SEEM** below.
