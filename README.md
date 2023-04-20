@@ -13,7 +13,7 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 * [OpenSeed](https://github.com/IDEA-Research/OpenSeeD) : Strong open-set segmentation methods.
 
 ## :rocket: Updates
-* Try our [Video Demo (Beta)](https://adca3070836938f5.gradio.app) on referring image segmentation.
+* Try our [Video Demo (Beta)](https://58ea5cf33ee3fdb3.gradio.app) on referring image segmentation.
 ![ezgif com-video-to-gif](https://user-images.githubusercontent.com/11957155/233255289-35c0c1e2-35f7-48e4-a7e9-68da50c839d3.gif)
 
 ## :bulb: Highlights
