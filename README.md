@@ -4,6 +4,13 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 
 :grapes:\[[Read our arXiv Paper](https://arxiv.org/pdf/2304.06718.pdf)\] &nbsp; :apple:\[[Try Hugging Face Demo](https://huggingface.co/spaces/xdecoder/SEEM)\] 
 
+## :rocket: Updates
+* Try our [Video Demo (Beta)](https://44a0d1f15aefcf1a.gradio.app/) on referring video object segmentation.
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/11957155/233255289-35c0c1e2-35f7-48e4-a7e9-68da50c839d3.gif" width="400" />
+  <img src="https://user-images.githubusercontent.com/11957155/233526415-a0a44963-19a3-4e56-965a-afaa598e6127.gif" width="400" /> 
+</p>
+
 :bulb: **Other awsome projects you may want to follow:**
 
 * [X-Decoder](https://github.com/microsoft/X-Decoder) : Generic decoder that can do multiple tasks with one model only；**And we built SEEM based on X-Decoder codebase**.
@@ -11,13 +18,6 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 * [Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything；
 
 * [OpenSeed](https://github.com/IDEA-Research/OpenSeeD) : Strong open-set segmentation methods.
-
-## :rocket: Updates
-* Try our [Video Demo (Beta)](https://44a0d1f15aefcf1a.gradio.app/) on referring video object segmentation.
-<p float="left">
-  <img src="https://user-images.githubusercontent.com/11957155/233255289-35c0c1e2-35f7-48e4-a7e9-68da50c839d3.gif" width="400" />
-  <img src="https://user-images.githubusercontent.com/11957155/233526415-a0a44963-19a3-4e56-965a-afaa598e6127.gif" width="400" /> 
-</p>
 
 ## :bulb: Highlights
 
