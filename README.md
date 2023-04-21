@@ -13,8 +13,11 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 * [OpenSeed](https://github.com/IDEA-Research/OpenSeeD) : Strong open-set segmentation methods.
 
 ## :rocket: Updates
-* Try our [Video Demo (Beta)](https://80fbb2a6ce4d28d2.gradio.app) on referring video object segmentation.
-![ezgif com-video-to-gif](https://user-images.githubusercontent.com/11957155/233255289-35c0c1e2-35f7-48e4-a7e9-68da50c839d3.gif)
+* Try our [Video Demo (Beta)](https://44a0d1f15aefcf1a.gradio.app/) on referring video object segmentation.
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/11957155/233255289-35c0c1e2-35f7-48e4-a7e9-68da50c839d3.gif" width="500" />
+  <img src="https://user-images.githubusercontent.com/11957155/233526415-a0a44963-19a3-4e56-965a-afaa598e6127.gif" width="500" /> 
+</p>
 
 ## :bulb: Highlights
 
@@ -75,7 +78,7 @@ We use Whiper to turn audio into text prompt to segment the object. Try it in ou
 
 <!-- ## 🔥 Combination of different prompts to mask -->
 
-## 🔥 Examples of different styles
+## :deciduous_tree: Examples of different styles
 An example of segmenting a meme.
 <div  align="center">    
 <img src="assets/emoj.png" width = "500" alt="assets/emoj.png" align=center />
