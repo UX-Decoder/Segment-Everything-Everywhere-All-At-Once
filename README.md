@@ -11,11 +11,17 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
   <img src="https://user-images.githubusercontent.com/11957155/233526415-a0a44963-19a3-4e56-965a-afaa598e6127.gif" width="400" /> 
 </p>
 
-:fire: **Other awsome projects you may want to follow:**
+:fire: **Related projects:**
 
-* [X-Decoder](https://github.com/microsoft/X-Decoder) : Generic decoder that can do multiple tasks with one model only；**And we built SEEM based on X-Decoder codebase**.
-* [Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything；
+* [X-Decoder](https://github.com/microsoft/X-Decoder) : Generic decoder that can do multiple tasks with one model only；**We built SEEM based on X-Decoder codebase**.
+* [FocalNet](https://github.com/microsoft/FocalNet) : Focal Modulation Networks; **We used FocalNet as the vision backbone**.
+* [UniCL](https://github.com/microsoft/UniCL) : Unified Contrasative Learning; **We used this technique for image-text contrastive larning**.
+
+:fire: **Other projects you may find interesting:**
+
 * [OpenSeed](https://github.com/IDEA-Research/OpenSeeD) : Strong open-set segmentation methods.
+* [Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anythin.
+* [LLaVA](https://github.com/haotian-liu/LLaVA) : Large Language and Vision Assistant.
 
 ## :bulb: Highlights
 
