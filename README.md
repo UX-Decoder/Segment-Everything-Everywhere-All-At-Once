@@ -13,7 +13,7 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 
 :fire: **Related projects:**
 
-* [X-Decoder](https://github.com/microsoft/X-Decoder) : Generic decoder that can do multiple tasks with one model only；**We built SEEM based on X-Decoder codebase**.
+* [X-Decoder](https://github.com/microsoft/X-Decoder) : Generic decoder that can do multiple tasks with one model only；**We built SEEM based on X-Decoder**.
 * [FocalNet](https://github.com/microsoft/FocalNet) : Focal Modulation Networks; **We used FocalNet as the vision backbone**.
 * [UniCL](https://github.com/microsoft/UniCL) : Unified Contrasative Learning; **We used this technique for image-text contrastive larning**.
 
