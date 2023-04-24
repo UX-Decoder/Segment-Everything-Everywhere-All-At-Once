@@ -13,8 +13,9 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 :fire: **Other projects you may find interesting:**
 
 * [OpenSeed](https://github.com/IDEA-Research/OpenSeeD) : Strong open-set segmentation methods.
-* [Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything.
+* [Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything; [Grounding DINO](https://github.com/IDEA-Research/GroundingDINO): A strong open-set detection model.
 * [LLaVA](https://github.com/haotian-liu/LLaVA) : Large Language and Vision Assistant.
+
 
 
 ## :rocket: Updates
