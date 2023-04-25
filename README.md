@@ -17,9 +17,14 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 * [X-GPT](https://github.com/microsoft/X-Decoder/tree/xgpt) : Conversational Visual Agent supported by X-Decoder.
 * [LLaVA](https://github.com/haotian-liu/LLaVA) : Large Language and Vision Assistant.
 
-
-
 ## :rocket: Updates
+* Inspired by the example in SA3D, we tried our Referring Video Segmentation on NERF Examples and works well :)
+
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/11957155/234230320-2189056d-1c89-4f0c-88da-851d12e8323c.gif" width="400" />
+  <img src="https://user-images.githubusercontent.com/11957155/234231284-0adc4bae-ef90-41d3-9883-41f6407a883b.gif" width="400" /> 
+</p>
+
 * Try our [Video Demo (Beta)](https://24485a8a48fe6c01.gradio.app) (also integrated to [Hugging Face Demo](https://huggingface.co/spaces/xdecoder/SEEM)) on referring video object segmentation.
 <p float="left">
   <img src="https://user-images.githubusercontent.com/11957155/233255289-35c0c1e2-35f7-48e4-a7e9-68da50c839d3.gif" width="400" />
