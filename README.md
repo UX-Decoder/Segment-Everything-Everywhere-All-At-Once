@@ -127,8 +127,9 @@ In the following figure, we compare the levels of interaction and semantics of t
 
 ## :bookmark_tabs: Catelog
 - [x] SEEM Demo
-- [x] Inference and installation code
-- [ ] Evaluation Code
+- [x] Inference and Installation Code
+- [ ] (Soon) Evaluation Code
+- [ ] (TBD When) Training Code
 
 ## :cupid: Acknowledgements
 - We appreciate hugging face for the gpu support on demo!
