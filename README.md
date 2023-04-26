@@ -126,10 +126,9 @@ In the following figure, we compare the levels of interaction and semantics of t
 <!-- This figure shows a comparison of our model with concurrent work SAM on the level of interactions and semantics. The x-axis and y-axis denote the level of interaction and semantics, respectively. Three segmentation tasks are shown, including Open-set Segmentation, Edge detection, and Interactive Segmentation. These tasks have different levels of interactions and semantics. For example, Open-set Segmentation usually requires a high level of semantics and does not require interaction. Compared with SAM, our model covers a wider range of interaction and semantics levels. For example, SAM only supports limited interaction types like points and boxes, while misses high-semantic tasks since it does not output semantic labels itself. Note that although we do not report edge detection results, our model can support it by simply converting masks to edges. -->
 
 ## :bookmark_tabs: Catelog
-- [x] SEEM + Whisper Demo
-- [ ] SEEM + Whisper + Stable Diffusion Demo
-- [ ] Inference and installation code
-- [x] Hugging Face Demo
+- [x] SEEM Demo
+- [x] Inference and installation code
+- [ ] Evaluation Code
 
 ## :cupid: Acknowledgements
 - We appreciate hugging face for the gpu support on demo!
