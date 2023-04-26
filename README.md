@@ -2,7 +2,12 @@
 
 We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **M**ulti-modal prompts all at once. SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combinations of prompts or generalize to custom prompts!
 
-:grapes:\[[Read our arXiv Paper](https://arxiv.org/pdf/2304.06718.pdf)\] &nbsp; :apple:\[[Try Hugging Face Demo](https://huggingface.co/spaces/xdecoder/SEEM)\] 
+:grapes: \[[Read our arXiv Paper](https://arxiv.org/pdf/2304.06718.pdf)\] &nbsp; :apple: \[[Try Hugging Face Demo](https://huggingface.co/spaces/xdecoder/SEEM)\] 
+
+:point_right: **One-Line Started:**
+```sh
+git clone -b git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.git && cd demo_code && sh run_demo.sh
+```
 
 :fire: **Related projects:**
 
@@ -16,6 +21,7 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 * [Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything; [Grounding DINO](https://github.com/IDEA-Research/GroundingDINO): A strong open-set detection model.
 * [X-GPT](https://github.com/microsoft/X-Decoder/tree/xgpt) : Conversational Visual Agent supported by X-Decoder.
 * [LLaVA](https://github.com/haotian-liu/LLaVA) : Large Language and Vision Assistant.
+
 
 ## :rocket: Updates
 * We are going to release the demo code with SEEM-Tiny model later today, stay tuned!
