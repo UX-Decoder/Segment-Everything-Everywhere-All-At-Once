@@ -146,4 +146,4 @@ gr.Interface(
     article=article,
     allow_flagging='never',
     cache_examples=False,
-).launch(server_port=6027)
+).launch()
