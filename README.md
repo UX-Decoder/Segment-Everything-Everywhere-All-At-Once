@@ -18,6 +18,7 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 * [LLaVA](https://github.com/haotian-liu/LLaVA) : Large Language and Vision Assistant.
 
 ## :rocket: Updates
+* We are going to release the demo code with SEEM-Tiny model later today, stay tuned!
 * Inspired by the example in SA3D, we tried our [Video Demo](https://huggingface.co/spaces/xdecoder/SEEM) on NERF Examples and works well :)
 
 <p float="left">
