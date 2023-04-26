@@ -77,7 +77,7 @@ SEEM can generate the mask with text input from the user, providing multi-modali
 
 ## :mosque: Referring image to mask
 With a simple click or stroke on the referring image, the model is able to segment the objects with similar semantics on the target images.
-![example](assets/ref_seg.png?raw=true)
+![example](assets/ref_seg_xyz.png?raw=true)
 
 SEEM understands the spatial relationship very well. Look at the three zebras! The segmented zebras have similar positions with the referred zebras. For example, when the leftmost zebra is referred on the upper row, the leftmost zebra on the bottom row is segmented.
 ![example](assets/spatial_relation.png?raw=true)
