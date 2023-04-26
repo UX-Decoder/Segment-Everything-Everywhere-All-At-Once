@@ -33,7 +33,6 @@ git clone -b git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once
 
 
 ## :bulb: Highlights
-
 Inspired by the appealing universal interface in LLMs, we are advocating universal, interactive multi-modal interface for any types of segmentation with **ONE SINGLE MODEL**. We emphasize **4** important features of **SEEM** below.
 1. **Versatility**: work with various types of prompts, for example, clicks, boxes, polygons, scribbles, texts, and referring image;
 2. **Compositionaliy**: deal with any compositions of prompts;
