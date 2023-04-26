@@ -6,7 +6,7 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 
 :point_right: *[New]* **One-Line Getting Started:**
 ```sh
-git clone -b git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.git && cd demo_code && sh run_demo.sh
+git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.git && cd demo_code && sh run_demo.sh
 ```
 
 :fire: **Related projects:**
