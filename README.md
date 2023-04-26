@@ -4,7 +4,7 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 
 :grapes: \[[Read our arXiv Paper](https://arxiv.org/pdf/2304.06718.pdf)\] &nbsp; :apple: \[[Try Hugging Face Demo](https://huggingface.co/spaces/xdecoder/SEEM)\] 
 
-:point_right: **One-Line Getting Started:**
+:point_right: *[New]* **One-Line Getting Started:**
 ```sh
 git clone -b git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.git && cd demo_code && sh run_demo.sh
 ```
@@ -23,8 +23,8 @@ git clone -b git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once
 * [LLaVA](https://github.com/haotian-liu/LLaVA) : Large Language and Vision Assistant.
 
 ## :rocket: Updates
-* [2023.04.26] We have released the [Demo Code](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/tree/main/demo_code) and [SEEM-Tiny Checkpoint](https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focalt_v1.pt)! Please try the One-Line Started!
-* [2023.04.20] SEEM Referring Video Segmentation is out! Please try the [Video Demo](https://huggingface.co/spaces/xdecoder/SEEM) and take a look at the [NERF examples](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once#tulip-nerf-examples).
+* **[2023.04.26]** We have released the [Demo Code](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/tree/main/demo_code) and [SEEM-Tiny Checkpoint](https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focalt_v1.pt)! Please try the One-Line Started!
+* **[2023.04.20]** SEEM Referring Video Segmentation is out! Please try the [Video Demo](https://huggingface.co/spaces/xdecoder/SEEM) and take a look at the [NERF examples](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once#tulip-nerf-examples).
 <p float="left">
   <img src="https://user-images.githubusercontent.com/11957155/233255289-35c0c1e2-35f7-48e4-a7e9-68da50c839d3.gif" width="400" />
   <img src="https://user-images.githubusercontent.com/11957155/233526415-a0a44963-19a3-4e56-965a-afaa598e6127.gif" width="400" /> 
