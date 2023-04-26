@@ -24,15 +24,8 @@ git clone -b git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once
 
 
 ## :rocket: Updates
-* We have released the [demo code](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/tree/main/demo_code) and [SEEM-Tiny Checkpoint](https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focalt_v1.pt)! Please try the One-Line Started!
-* Inspired by the example in SA3D, we tried our [Video Demo](https://huggingface.co/spaces/xdecoder/SEEM) on NERF Examples and works well :)
-
-<p float="left">
-  <img src="https://user-images.githubusercontent.com/11957155/234230320-2189056d-1c89-4f0c-88da-851d12e8323c.gif" width="400" />
-  <img src="https://user-images.githubusercontent.com/11957155/234231284-0adc4bae-ef90-41d3-9883-41f6407a883b.gif" width="400" /> 
-</p>
-
-* Try our [Video Demo](https://huggingface.co/spaces/xdecoder/SEEM) on referring video object segmentation.
+* We have released the [Demo Code](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/tree/main/demo_code) and [SEEM-Tiny Checkpoint](https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focalt_v1.pt)! Please try the One-Line Started!
+* SEEM Referring Video Segmentation is out! Please try the [Video Demo](https://huggingface.co/spaces/xdecoder/SEEM) and take a look at the [NERF examples]().
 <p float="left">
   <img src="https://user-images.githubusercontent.com/11957155/233255289-35c0c1e2-35f7-48e4-a7e9-68da50c839d3.gif" width="400" />
   <img src="https://user-images.githubusercontent.com/11957155/233526415-a0a44963-19a3-4e56-965a-afaa598e6127.gif" width="400" /> 
@@ -57,6 +50,13 @@ A breif introduction of all the generic and interactive segmentation tasks we ca
 - Remember to provide the actual prompt for each promt type you select, otherwise you will meet an error (e.g., rember to draw on the referring image);
 - Our model by defualt support the **vocabulary** of COCO 80 categories, others will be classified to 'others' or misclassifed. If you wanna segment using open-vocabulary labels, include the text label in 'text' button after drawing sribbles.
 - Click "Submit" and wait for a few seconds.
+
+## :tulip: Video Examples
+* Inspired by the example in SA3D, we tried SEEM on NERF Examples and works well :)
+<p float="left">
+  <img src="https://user-images.githubusercontent.com/11957155/234230320-2189056d-1c89-4f0c-88da-851d12e8323c.gif" width="400" />
+  <img src="https://user-images.githubusercontent.com/11957155/234231284-0adc4bae-ef90-41d3-9883-41f6407a883b.gif" width="400" /> 
+</p>
 
 ## :volcano: An interesting example
 An example of Transformers. The referred image is the truck form of Optimus Prime. Our model can always segment Optimus Prime in target images no matter which form it is in. Thanks Hongyang Li for this fun example.
