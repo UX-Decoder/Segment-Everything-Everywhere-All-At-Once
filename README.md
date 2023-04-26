@@ -24,7 +24,7 @@ git clone -b git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once
 
 
 ## :rocket: Updates
-* We are going to release the demo code with SEEM-Tiny model later today, stay tuned!
+* We have released the [demo code](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/tree/main/demo_code) and [SEEM-Tiny Checkpoint](https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focalt_v1.pt)! Please try the One-Line Started!
 * Inspired by the example in SA3D, we tried our [Video Demo](https://huggingface.co/spaces/xdecoder/SEEM) on NERF Examples and works well :)
 
 <p float="left">
