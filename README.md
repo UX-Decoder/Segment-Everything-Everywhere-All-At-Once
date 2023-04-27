@@ -12,7 +12,7 @@ git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.gi
 :fire: **Related projects:**
 
 * [FocalNet](https://github.com/microsoft/FocalNet) : Focal Modulation Networks; **We used FocalNet as the vision backbone**.
-* [UniCL](https://github.com/microsoft/UniCL) : Unified Contrasative Learning; **We used this technique for image-text contrastive larning**.
+* [UniCL](https://github.com/microsoft/UniCL) : Unified Contrastive Learning; **We used this technique for image-text contrastive learning**.
 * [X-Decoder](https://github.com/microsoft/X-Decoder) : Generic decoder that can do multiple tasks with one model only；**We built SEEM based on X-Decoder**.
 
 :fire: **Other projects you may find interesting:**
@@ -31,21 +31,21 @@ git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.gi
 </p>
 
 ## :bulb: Highlights
-Inspired by the appealing universal interface in LLMs, we are advocating universal, interactive multi-modal interface for any types of segmentation with **ONE SINGLE MODEL**. We emphasize **4** important features of **SEEM** below.
+Inspired by the appealing universal interface in LLMs, we are advocating a universal, interactive multi-modal interface for any type of segmentation with **ONE SINGLE MODEL**. We emphasize **4** important features of **SEEM** below.
 1. **Versatility**: work with various types of prompts, for example, clicks, boxes, polygons, scribbles, texts, and referring image;
 2. **Compositionaliy**: deal with any compositions of prompts;
 3. **Interactivity**: interact with user in multi-rounds, thanks to the memory prompt of **SEEM** to store the session history;
 4. **Semantic awareness**: give a semantic label to any predicted mask;
 
 ![SEEM design](assets/teaser_new.png?raw=true)
-A breif introduction of all the generic and interactive segmentation tasks we can do.
+A brief introduction of all the generic and interactive segmentation tasks we can do.
 
 ## :unicorn: How to use the demo
 - Try our default examples first;
 - Upload an image;
 - Select at least one type of prompt of your choice (If you want to use referred region of another image please check "Example" and upload another image in referring image panel);
-- Remember to provide the actual prompt for each promt type you select, otherwise you will meet an error (e.g., rember to draw on the referring image);
-- Our model by defualt support the **vocabulary** of COCO 80 categories, others will be classified to 'others' or misclassifed. If you wanna segment using open-vocabulary labels, include the text label in 'text' button after drawing sribbles.
+- Remember to provide the actual prompt for each prompt type you select, otherwise you will meet an error (e.g., remember to draw on the referring image);
+- Our model by default support the **vocabulary** of COCO 80 categories, others will be classified to 'others' or misclassified. If you want to segment using open-vocabulary labels, include the text label in 'text' button after drawing scribbles.
 - Click "Submit" and wait for a few seconds.
 
 ## :volcano: An interesting example
@@ -87,7 +87,7 @@ No training on video data needed, SEEM works perfectly for you to segment videos
 ![example](assets/referring_video_visualize.png?raw=true)
 
 ## :sunflower: Audio to mask
-We use Whiper to turn audio into text prompt to segment the object. Try it in our demo!
+We use Whisper to turn audio into text prompt to segment the object. Try it in our demo!
 
 <div  align="center">    
 <img src="assets/audio.png" width = "900" alt="assets/audio.png" align=center />
@@ -106,7 +106,7 @@ An example of segmenting trees in cartoon style.
 <img src="assets/trees_text.png" width = "700" alt="assets/trees_text.png" align=center />
 </div>
 
-An example of segmenting a minecraft image.
+An example of segmenting a Minecraft image.
 <div  align="center">    
 <img src="assets/minecraft.png" width = "700" alt="assets/minecraft.png" align=center />
 </div>
@@ -132,7 +132,7 @@ In the following figure, we compare the levels of interaction and semantics of t
 - [ ] (TBD When) Training Code
 
 ## :cupid: Acknowledgements
-- We appreciate hugging face for the gpu support on demo!
+- We appreciate hugging face for the GPU support on demo!
 
 
 
