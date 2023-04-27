@@ -4,7 +4,7 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 
 :grapes: \[[Read our arXiv Paper](https://arxiv.org/pdf/2304.06718.pdf)\] &nbsp; :apple: \[[Try Hugging Face Demo](https://huggingface.co/spaces/xdecoder/SEEM)\] 
 
-:point_right: *[New]* **One-Line Getting Started:**
+:point_right: *[New]* **One-Line Getting Started with Linux:**
 ```sh
 git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.git && cd Segment-Everything-Everywhere-All-At-Once/demo_code && sh run_demo.sh
 ```
