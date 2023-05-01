@@ -118,7 +118,7 @@ Instructions:
 &#x1F388 Upload an image/video (If you want to use referred region of another image please check "Example" and upload another image in referring image panel);
 &#x1F388 Select at least one type of prompt of your choice (If you want to use referred region of another image please check "Example");
 &#x1F388 Remember to provide the actual prompt for each promt type you select, otherwise you will meet an error (e.g., rember to draw on the referring image);
-&#x1F388 Our model by defualt support the vocabulary of COCO 133 categories, others will be classified to 'others' or misclassifed.
+&#x1F388 Our model by default support the vocabulary of COCO 133 categories, others will be classified to 'others' or misclassifed.
 '''
 
 article = "The Demo is Run on SEEM-Tiny."
