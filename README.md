@@ -33,7 +33,8 @@ git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.gi
 * [LLaVA](https://github.com/haotian-liu/LLaVA) : Large Language and Vision Assistant.
 
 ## :rocket: Updates
-* **[2023.04.28]** We have updated the [Paper](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/blob/main/SEEM_arXiv.pdf) that shows *better interactive segmentation results than SAM*, which trained on x50 more data than us!
+* **[2023.05.02]** We have released the [SEEM Focal-L](https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focall_v1.pt) and [X-Decoder Focal-L](https://projects4jw.blob.core.windows.net/x-decoder/release/xdecoder_focall_last.pt) checkpoints and [configs]()!
+* **[2023.04.28]** We have updated the [ArXiv](https://arxiv.org/pdf/2304.06718.pdf) that shows *better interactive segmentation results than SAM*, which trained on x50 more data than us!
 * **[2023.04.26]** We have released the [Demo Code](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/tree/main/demo_code) and [SEEM-Tiny Checkpoint](https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focalt_v1.pt)! Please try the One-Line Started!
 * **[2023.04.20]** SEEM Referring Video Segmentation is out! Please try the [Video Demo](https://huggingface.co/spaces/xdecoder/SEEM) and take a look at the [NERF examples](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once#tulip-nerf-examples).
 <p float="left">
