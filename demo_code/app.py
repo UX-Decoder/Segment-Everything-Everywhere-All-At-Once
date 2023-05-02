@@ -28,7 +28,7 @@ from tasks import *
 
 def parse_option():
     parser = argparse.ArgumentParser('SEEM Demo', add_help=False)
-    parser.add_argument('--conf_files', default="configs/seem/seem_focalt_lang.yaml", metavar="FILE", help='path to config file', )
+    parser.add_argument('--conf_files', default="configs/seem/seem_focall_lang.yaml", metavar="FILE", help='path to config file', )
     args = parser.parse_args()
 
     return args
@@ -41,10 +41,17 @@ opt = load_opt_from_config_files(args.conf_files)
 opt = init_distributed(opt)
 
 # META DATA
+cur_model = 'None'
 if 'focalt' in args.conf_files:
-    pretrained_pth = os.path.join("seem_focalt_v1.pt")
+    pretrained_pth = os.path.join("seem_focalt_v2.pt")
     if not os.path.exists(pretrained_pth):
-        os.system("wget {}".format("https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focalt_v1.pt"))
+        os.system("wget {}".format("https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focalt_v2.pt"))
+    cur_model = 'Focal-T'
+elif 'focal' in args.conf_files:
+    pretrained_pth = os.path.join("seem_focall_v1.pt")
+    if not os.path.exists(pretrained_pth):
+        os.system("wget {}".format("https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focall_v1.pt"))
+    cur_model = 'Focal-L'
 
 '''
 build model
@@ -106,10 +113,10 @@ description = """
 </div>
 <div style="text-align: left; font-weight: bold;">
     <br>
-    &#x1F32A Note: The current model is run on <span style="color:blue;">SEEM-Tiny</span>, for <span style="color:blue;">SEEM-Large</span> refer to <a href="https://huggingface.co/spaces/xdecoder/SEEM" target="_blank"><span style="color:red;">our demo</span></a>.
+    &#x1F32A Note: The current model is run on <span style="color:blue;">SEEM {}</span>, for <span style="color:blue;">best performance</span> refer to <a href="https://huggingface.co/spaces/xdecoder/SEEM" target="_blank"><span style="color:red;">our demo</span></a>.
     </p>
 </div>
-"""
+""".format(cur_model)
 
 '''Usage
 Instructions:

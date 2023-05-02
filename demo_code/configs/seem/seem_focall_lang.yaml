@@ -1,0 +1,143 @@
+# --------------------------------------------------------
+# SEEM -- Segment Everything Everywhere All At Once
+# Copyright (c) 2022 Microsoft
+# Licensed under The MIT License [see LICENSE for details]
+# Written by Xueyan Zou (xueyan@cs.wisc.edu), Jianwei Yang (jianwyan@microsoft.com)
+# --------------------------------------------------------
+
+##################
+# Task settings
+##################
+VERBOSE: true
+MODEL:
+  NAME: seem_model
+  HEAD: xdecoder_head
+  DIM_PROJ: 512
+  TEXT:
+    ARCH: vlpencoder
+    NAME: transformer
+    TOKENIZER: clip
+    CONTEXT_LENGTH: 77 # 77
+    WIDTH: 512
+    HEADS: 8
+    LAYERS: 12 # 6
+    AUTOGRESSIVE: True
+  BACKBONE:
+    NAME: focal
+    PRETRAINED: ''
+    LOAD_PRETRAINED: false
+    FOCAL:
+      PRETRAIN_IMG_SIZE: 224
+      PATCH_SIZE: 4
+      EMBED_DIM: 192
+      DEPTHS: [2, 2, 18, 2]
+      FOCAL_LEVELS: [4, 4, 4, 4]
+      FOCAL_WINDOWS: [3, 3, 3, 3]
+      DROP_PATH_RATE: 0.3
+      MLP_RATIO: 4.0
+      DROP_RATE: 0.0
+      PATCH_NORM: True
+      USE_CONV_EMBED: True
+      SCALING_MODULATOR: True
+      USE_CHECKPOINT: False
+      USE_POSTLN: true
+      USE_POSTLN_IN_MODULATION: false
+      USE_LAYERSCALE: True
+      OUT_FEATURES: ["res2", "res3", "res4", "res5"]
+      OUT_INDICES: [0, 1, 2, 3]
+  ENCODER:
+    NAME: transformer_encoder_fpn
+    IGNORE_VALUE: 255
+    NUM_CLASSES: 133
+    LOSS_WEIGHT: 1.0
+    CONVS_DIM: 512
+    MASK_DIM: 512
+    NORM: "GN"
+    IN_FEATURES: ["res2", "res3", "res4", "res5"]
+    DEFORMABLE_TRANSFORMER_ENCODER_IN_FEATURES: ["res3", "res4", "res5"]
+    COMMON_STRIDE: 4
+    TRANSFORMER_ENC_LAYERS: 6
+  DECODER:
+    NAME: seem
+    TRANSFORMER_IN_FEATURE: "multi_scale_pixel_decoder"
+    MASK:
+      ENABLED: True
+    DETECTION: False
+    SPATIAL:
+      ENABLED: True
+    GROUNDING:
+      ENABLED: False
+      MAX_LEN: 5
+      TEXT_WEIGHT: 2.0
+      CLASS_WEIGHT: 0.5
+    VISUAL:
+      ENABLED: False
+    AUDIO:
+      ENABLED: False
+    OPENIMAGE:
+      ENABLED: False
+      NEGATIVE_SAMPLES: 5
+      GROUNDING:
+        ENABLED: False
+        MAX_LEN: 5
+    CAPTION:
+      ENABLED: False
+      PHRASE_PROB: 0.5
+      SIM_THRES: 0.95
+    HIDDEN_DIM: 512
+    NUM_OBJECT_QUERIES: 101
+    NHEADS: 8
+    DROPOUT: 0.0
+    DIM_FEEDFORWARD: 2048
+    MAX_SPATIAL_LEN: [512, 512, 512, 512]
+    PRE_NORM: False
+    ENFORCE_INPUT_PROJ: False
+    SIZE_DIVISIBILITY: 32
+    TRAIN_NUM_POINTS: 12544
+    OVERSAMPLE_RATIO: 3.0
+    IMPORTANCE_SAMPLE_RATIO: 0.75
+    DEC_LAYERS: 10  # 9 decoder layers, add one for the loss on learnable query
+    TOP_GROUNDING_LAYERS: 10
+    TOP_CAPTION_LAYERS: 10
+    TOP_SPATIAL_LAYERS: 10
+    TOP_OPENIMAGE_LAYERS: 10
+    TEST:
+      SEMANTIC_ON: True
+      INSTANCE_ON: True
+      PANOPTIC_ON: True
+      OVERLAP_THRESHOLD: 0.8
+      OBJECT_MASK_THRESHOLD: 0.4
+      SEM_SEG_POSTPROCESSING_BEFORE_INFERENCE: false
+      DETECTIONS_PER_IMAGE: 100
+
+# Multi-modal Architecture, order matters
+ATTENTION_ARCH:
+  VARIABLE:
+    queries: ['object']
+    tokens: ['grounding', 'spatial', 'visual', 'audio']
+  SELF_ATTENTION:
+    queries:
+      object: ['queries_object', 'tokens_grounding', 'tokens_spatial', 'tokens_visual', 'tokens_audio']
+    tokens:
+      grounding: ['queries_object', 'tokens_grounding']
+      spatial: ['tokens_spatial']
+      visual: ['tokens_visual']
+      audio: ['queries_object', 'tokens_audio']
+  CROSS_ATTENTION:
+    queries:
+      object: True
+    tokens:
+      grounding: False
+      spatial: False
+      visual: False
+      audio: False
+  MASKING: ['tokens_spatial', 'tokens_grounding', 'tokens_visual', 'tokens_audio']
+  DUPLICATION:
+    queries:
+      grounding: 'queries_object'
+      spatial: 'queries_object'
+  SPATIAL_MEMORIES: 32
+
+INPUT:
+  PIXEL_MEAN: [123.675, 116.280, 103.530]
+  PIXEL_STD: [58.395, 57.120, 57.375]
