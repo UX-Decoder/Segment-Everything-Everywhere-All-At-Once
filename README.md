@@ -4,10 +4,22 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 
 :grapes: \[[Read our arXiv Paper](https://arxiv.org/pdf/2304.06718.pdf)\] &nbsp; :apple: \[[Try Hugging Face Demo](https://huggingface.co/spaces/xdecoder/SEEM)\] 
 
-:point_right: *[New]* **One-Line Getting Started with Linux:**
+:point_right: **One-Line Getting Started with Linux:**
 ```sh
 git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.git && cd Segment-Everything-Everywhere-All-At-Once/demo_code && sh run_demo.sh
 ```
+
+:point_right: *[New]* **Latest Checkpoints and Numbers:**
+|                                                                                                        |          | COCO |      |      | Ref-COCOg |      |      | VOC   |       | SBD   |       |
+|--------------------------------------------------------------------------------------------------------|----------|------|------|------|-----------|------|------|-------|-------|-------|-------|
+| Checkpoint                                                                                             | backbone | PQ   | mAP  | mIoU | cIoU      | mIoU | AP50 | NoC85 | NoC90 | NoC85 | NoC90 |
+| [X-Decoder](https://projects4jw.blob.core.windows.net/x-decoder/release/xdecoder_focalt_last.pt)       | Focal-T  | 50.8 | 39.5 | 62.4 | 57.6      | 63.2 | 71.6 | -     | -     | -     | -     |
+| [X-Decoder-oq201](https://projects4jw.blob.core.windows.net/x-decoder/release/xdecoder_focall_last.pt) | Focal-L  | 56.5 | 46.7 | 67.2 | 62.8      | 67.5 | 76.3 | -     | -     | -     | -     |
+| [SEEM](https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focalt_v2.pt)                 | Focal-T  | 50.6 | 39.4 | 60.9 | 58.5      | 63.5 | 71.6 | 3.54  | 4.59  | *     | *     |
+| SEEM                                                                                                   | Davit-d3 | 56.2 | 46.8 | 65.3 | 63.2      | 68.3 | 76.6 | 2.99  | 3.89  | 5.93  | 9.23  |
+| [SEEM-oq101](https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focall_v1.pt)            | Focal-L  | 56.2 | 46.4 | 65.5 | 62.8      | 67.7 | 76.2 | 3.04  | 3.85  | *     | *     |
+
+
 
 :fire: **Related projects:**
 
