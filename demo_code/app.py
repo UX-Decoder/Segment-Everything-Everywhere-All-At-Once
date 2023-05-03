@@ -28,7 +28,7 @@ from tasks import *
 
 def parse_option():
     parser = argparse.ArgumentParser('SEEM Demo', add_help=False)
-    parser.add_argument('--conf_files', default="configs/seem/seem_focall_lang.yaml", metavar="FILE", help='path to config file', )
+    parser.add_argument('--conf_files', default=os.path.join(os.path.dirname(__file__),"configs/seem/seem_focall_lang.yaml"), metavar="FILE", help='path to config file', )
     args = parser.parse_args()
 
     return args
@@ -43,14 +43,14 @@ opt = init_distributed(opt)
 # META DATA
 cur_model = 'None'
 if 'focalt' in args.conf_files:
-    pretrained_pth = os.path.join("seem_focalt_v2.pt")
+    pretrained_pth = os.path.join(os.path.dirname(__file__),"seem_focalt_v2.pt")
     if not os.path.exists(pretrained_pth):
-        os.system("wget {}".format("https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focalt_v2.pt"))
+        os.system("wget {} -P {}".format("https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focalt_v2.pt",os.path.dirname(__file__)))
     cur_model = 'Focal-T'
 elif 'focal' in args.conf_files:
-    pretrained_pth = os.path.join("seem_focall_v1.pt")
+    pretrained_pth = os.path.join(os.path.dirname(__file__),"seem_focall_v1.pt")
     if not os.path.exists(pretrained_pth):
-        os.system("wget {}".format("https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focall_v1.pt"))
+        os.system("wget {} -P {}".format("https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focall_v1.pt",os.path.dirname(__file__)))
     cur_model = 'Focal-L'
 
 '''
