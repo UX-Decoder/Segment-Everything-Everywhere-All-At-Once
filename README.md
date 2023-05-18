@@ -68,7 +68,7 @@ An example of Transformers. The referred image is the truck form of Optimus Prim
 </div>
 
 ## :tulip: NERF Examples
-* Inspired by the example in SA3D, we tried SEEM on NERF Examples and works well :)
+* Inspired by the example in [SA3D](https://github.com/Jumpat/SegmentAnythingin3D), we tried SEEM on NERF Examples and works well :)
 <p float="left">
   <img src="https://user-images.githubusercontent.com/11957155/234230320-2189056d-1c89-4f0c-88da-851d12e8323c.gif" width="400" />
   <img src="https://user-images.githubusercontent.com/11957155/234231284-0adc4bae-ef90-41d3-9883-41f6407a883b.gif" width="400" /> 
