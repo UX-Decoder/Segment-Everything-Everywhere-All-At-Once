@@ -21,9 +21,9 @@ git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.gi
 
 :fire: **Related projects:**
 
-* [FocalNet](https://github.com/microsoft/FocalNet) : Focal Modulation Networks; **We used FocalNet as the vision backbone**.
-* [UniCL](https://github.com/microsoft/UniCL) : Unified Contrastive Learning; **We used this technique for image-text contrastive learning**.
-* [X-Decoder](https://github.com/microsoft/X-Decoder) : Generic decoder that can do multiple tasks with one model only；**We built SEEM based on X-Decoder**.
+* [FocalNet](https://github.com/microsoft/FocalNet) and [DaViT](https://github.com/dingmyu/davit) : We used FocalNet and DaViT as the vision backbones.
+* [UniCL](https://github.com/microsoft/UniCL) : We used unified contrastive learning technique for learning image-text representations.
+* [X-Decoder](https://github.com/microsoft/X-Decoder) : We built SEEM based on X-Decoder which is a generalist decoder that can do multiple tasks with one model only.
 
 :fire: **Other projects you may find interesting:**
 
