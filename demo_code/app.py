@@ -45,12 +45,12 @@ cur_model = 'None'
 if 'focalt' in args.conf_files:
     pretrained_pth = os.path.join("seem_focalt_v2.pt")
     if not os.path.exists(pretrained_pth):
-        os.system("wget {}".format("https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focalt_v2.pt"))
+        os.system("wget {}".format("https://huggingface.co/xdecoder/SEEM/resolve/main/seem_focalt_v2.pt"))
     cur_model = 'Focal-T'
 elif 'focal' in args.conf_files:
     pretrained_pth = os.path.join("seem_focall_v1.pt")
     if not os.path.exists(pretrained_pth):
-        os.system("wget {}".format("https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focall_v1.pt"))
+        os.system("wget {}".format("https://huggingface.co/xdecoder/SEEM/resolve/main/seem_focall_v1.pt"))
     cur_model = 'Focal-L'
 
 '''
