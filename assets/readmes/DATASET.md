@@ -1,4 +1,7 @@
 # Preparing Dataset
+
+:bangbang: The dataset preparation contains many details, welcome community contribution to fix any bug, Thanks!
+
 Our dataloader follows [Detectron2](https://github.com/facebookresearch/detectron2) that contains: <br/>
 (1) [A dataset registrator](datasets/registration) <br/>
 (2) [A dataset mapper](datasets/dataset_mappers) <br/>
