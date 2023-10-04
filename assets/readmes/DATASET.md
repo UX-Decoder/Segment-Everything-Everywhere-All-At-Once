@@ -85,7 +85,7 @@ There are overlap between COCO2017, COCO-Karpathy and REF-COCO dataset, and ref-
 ## Evaluation Dataset
 
 ### RefCOCO (SEEM & X-Decoder)
-Please refer to COCO Preparation on [line]().
+Please refer to COCO Preparation on [line](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/blob/v1.0/assets/readmes/DATASET.md#coco-seem--x-decoder).
 
 ### ADE20K, Cityscapes (X-Decoder)
 Please Refer to [Mask2Former](https://github.com/facebookresearch/Mask2Former/tree/main/datasets).
