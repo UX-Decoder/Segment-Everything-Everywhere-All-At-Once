@@ -44,12 +44,6 @@ git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.gi
   <img src="https://user-images.githubusercontent.com/11957155/233526415-a0a44963-19a3-4e56-965a-afaa598e6127.gif" width="400" /> 
 </p>
 
-## :bookmark_tabs: Catelog
-- [x] SEEM Demo
-- [x] Inference and Installation Code
-- [x] Evaluation Code
-- [x] Training Code
-
 :fire: **Related projects:**
 
 * [FocalNet](https://github.com/microsoft/FocalNet) and [DaViT](https://github.com/dingmyu/davit) : We used FocalNet and DaViT as the vision backbones.
@@ -62,6 +56,12 @@ git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.gi
 * [Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything; [Grounding DINO](https://github.com/IDEA-Research/GroundingDINO): A strong open-set detection model.
 * [X-GPT](https://github.com/microsoft/X-Decoder/tree/xgpt) : Conversational Visual Agent supported by X-Decoder.
 * [LLaVA](https://github.com/haotian-liu/LLaVA) : Large Language and Vision Assistant.
+
+## :bookmark_tabs: Catelog
+- [x] SEEM Demo
+- [x] Inference and Installation Code
+- [x] Evaluation Code
+- [x] Training Code
 
 ## :bulb: Highlights
 Inspired by the appealing universal interface in LLMs, we are advocating a universal, interactive multi-modal interface for any type of segmentation with **ONE SINGLE MODEL**. We emphasize **4** important features of **SEEM** below.
