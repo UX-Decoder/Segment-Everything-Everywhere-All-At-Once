@@ -4,12 +4,12 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 
 :grapes: \[[Read our arXiv Paper](https://arxiv.org/pdf/2304.06718.pdf)\] &nbsp; :apple: \[[Try our Demo](http://semantic-sam.xyzou.net:6090/)\] 
 
-**One-Line Demo with Linux:**
+:fire: **One-Line Demo with Linux:**
 ```sh
 git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.git && sh aasets/scripts/run_demo.sh
 ```
 
-**Getting Started:**
+:fire: **Getting Started:**
 
 [INSTALL.md](assets/readmes/INSTALL.md) <br>
 [DATASET.md](assets/readmes/DATASET.md) <br>
@@ -31,19 +31,6 @@ git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.gi
 
 **SEEM_v0:** Supporting Single Interactive object training and inference <br>
 **SEEM_v1:** Supporting Multiple Interactive objects training and inference
-
-:fire: **Related projects:**
-
-* [FocalNet](https://github.com/microsoft/FocalNet) and [DaViT](https://github.com/dingmyu/davit) : We used FocalNet and DaViT as the vision backbones.
-* [UniCL](https://github.com/microsoft/UniCL) : We used unified contrastive learning technique for learning image-text representations.
-* [X-Decoder](https://github.com/microsoft/X-Decoder) : We built SEEM based on X-Decoder which is a generalist decoder that can do multiple tasks with one model only.
-
-:fire: **Other projects you may find interesting:**
-* [Semantic-SAM](https://github.com/UX-Decoder/Semantic-SAM), a universal image segmentation model to enable segment and recognize anything at any desired granularity
-* [OpenSeed](https://github.com/IDEA-Research/OpenSeeD) : Strong open-set segmentation methods.
-* [Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything; [Grounding DINO](https://github.com/IDEA-Research/GroundingDINO): A strong open-set detection model.
-* [X-GPT](https://github.com/microsoft/X-Decoder/tree/xgpt) : Conversational Visual Agent supported by X-Decoder.
-* [LLaVA](https://github.com/haotian-liu/LLaVA) : Large Language and Vision Assistant.
 
 ## :rocket: Updates
 * **[2023.07.27]** :roller_coaster: We are excited to release our [X-Decoder](https://github.com/microsoft/X-Decoder) training code! We will release its descendant SEEM training code very soon!
@@ -155,18 +142,21 @@ In the following figure, we compare the levels of interaction and semantics of t
 ## :bookmark_tabs: Catelog
 - [x] SEEM Demo
 - [x] Inference and Installation Code
-- [ ] (Soon) Evaluation Code
-- [ ] (TBD When) Training Code
+- [x] Evaluation Code
+- [x] Training Code
+
+:fire: **Related projects:**
+
+* [FocalNet](https://github.com/microsoft/FocalNet) and [DaViT](https://github.com/dingmyu/davit) : We used FocalNet and DaViT as the vision backbones.
+* [UniCL](https://github.com/microsoft/UniCL) : We used unified contrastive learning technique for learning image-text representations.
+* [X-Decoder](https://github.com/microsoft/X-Decoder) : We built SEEM based on X-Decoder which is a generalist decoder that can do multiple tasks with one model only.
+
+:fire: **Other projects you may find interesting:**
+* [Semantic-SAM](https://github.com/UX-Decoder/Semantic-SAM), a universal image segmentation model to enable segment and recognize anything at any desired granularity
+* [OpenSeed](https://github.com/IDEA-Research/OpenSeeD) : Strong open-set segmentation methods.
+* [Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything; [Grounding DINO](https://github.com/IDEA-Research/GroundingDINO): A strong open-set detection model.
+* [X-GPT](https://github.com/microsoft/X-Decoder/tree/xgpt) : Conversational Visual Agent supported by X-Decoder.
+* [LLaVA](https://github.com/haotian-liu/LLaVA) : Large Language and Vision Assistant.
 
 ## :cupid: Acknowledgements
 - We appreciate hugging face for the GPU support on demo!
-
-
-
-
-
-<!-- ## Citation (update when paper is available on arxiv)
-If you find this project helpful for your research, please consider citing the following BibTeX entry.
-```BibTex
-
-``` -->
