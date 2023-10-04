@@ -67,7 +67,7 @@ Inspired by the appealing universal interface in LLMs, we are advocating a unive
 3. **Interactivity**: interact with user in multi-rounds, thanks to the memory prompt of **SEEM** to store the session history;
 4. **Semantic awareness**: give a semantic label to any predicted mask;
 
-![SEEM design](assets/imagesteaser_new.png?raw=true)
+![SEEM design](assets/images/teaser_new.png?raw=true)
 A brief introduction of all the generic and interactive segmentation tasks we can do.
 
 ## :unicorn: How to use the demo
@@ -82,7 +82,7 @@ A brief introduction of all the generic and interactive segmentation tasks we ca
 An example of Transformers. The referred image is the truck form of Optimus Prime. Our model can always segment Optimus Prime in target images no matter which form it is in. Thanks Hongyang Li for this fun example.
 
 <div  align="center">    
-<img src="assets/imagestransformers_gh.png" width = "700" alt="assets/imagestransformers_gh.png" align=center />
+<img src="assets/images/transformers_gh.png" width = "700" alt="assets/images/transformers_gh.png" align=center />
 </div>
 
 ## :tulip: NERF Examples
@@ -95,32 +95,32 @@ An example of Transformers. The referred image is the truck form of Optimus Prim
 ## :camping: Click, scribble to mask
 With a simple click or stoke from the user, we can generate the masks and the corresponding category labels for it.
 
-![SEEM design](assets/imagesclick.png?raw=true)
+![SEEM design](assets/images/click.png?raw=true)
 ## :mountain_snow: Text to mask
 SEEM can generate the mask with text input from the user, providing multi-modality interaction with human.
 
-![example](assets/imagestext.png?raw=true)
+![example](assets/images/text.png?raw=true)
 <!-- 
 <div  align="center">    
-<img src="assets/imagestext.png" width = "700" alt="assets/imagestext.png" align=center />
+<img src="assets/images/text.png" width = "700" alt="assets/images/text.png" align=center />
 </div> -->
 
 ## :mosque: Referring image to mask
 With a simple click or stroke on the referring image, the model is able to segment the objects with similar semantics on the target images.
-![example](assets/imagesref_seg.png?raw=true)
+![example](assets/images/ref_seg.png?raw=true)
 
 SEEM understands the spatial relationship very well. Look at the three zebras! The segmented zebras have similar positions with the referred zebras. For example, when the leftmost zebra is referred on the upper row, the leftmost zebra on the bottom row is segmented.
-![example](assets/imagesspatial_relation.png?raw=true)
+![example](assets/images/spatial_relation.png?raw=true)
 
 ## :blossom: Referring image to video mask
 No training on video data needed, SEEM works perfectly for you to segment videos with whatever queries you specify!
-![example](assets/imagesreferring_video_visualize.png?raw=true)
+![example](assets/images/referring_video_visualize.png?raw=true)
 
 ## :sunflower: Audio to mask
 We use Whisper to turn audio into text prompt to segment the object. Try it in our demo!
 
 <div  align="center">    
-<img src="assets/imagesaudio.png" width = "900" alt="assets/imagesaudio.png" align=center />
+<img src="assets/images/audio.png" width = "900" alt="assets/images/audio.png" align=center />
 </div>
 
 <!-- ## 🔥 Combination of different prompts to mask -->
@@ -128,30 +128,30 @@ We use Whisper to turn audio into text prompt to segment the object. Try it in o
 ## :deciduous_tree: Examples of different styles
 An example of segmenting a meme.
 <div  align="center">    
-<img src="assets/imagesemoj.png" width = "500" alt="assets/imagesemoj.png" align=center />
+<img src="assets/images/emoj.png" width = "500" alt="assets/images/emoj.png" align=center />
 </div>
 
 An example of segmenting trees in cartoon style.
 <div  align="center">    
-<img src="assets/imagestrees_text.png" width = "700" alt="assets/imagestrees_text.png" align=center />
+<img src="assets/images/trees_text.png" width = "700" alt="assets/images/trees_text.png" align=center />
 </div>
 
 An example of segmenting a Minecraft image.
 <div  align="center">    
-<img src="assets/imagesminecraft.png" width = "700" alt="assets/imagesminecraft.png" align=center />
+<img src="assets/images/minecraft.png" width = "700" alt="assets/images/minecraft.png" align=center />
 </div>
-<!-- ![example](assets/imagesminecraft.png?raw=true) -->
+<!-- ![example](assets/images/minecraft.png?raw=true) -->
 An example of using referring image on a popular teddy bear.
 
-![example](assets/imagesfox_v2.png?raw=true)
+![example](assets/images/fox_v2.png?raw=true)
 
 ## Model
-![SEEM design](assets/imagesmodel.png?raw=true)
+![SEEM design](assets/images/model.png?raw=true)
 
 ## Comparison with SAM
 In the following figure, we compare the levels of interaction and semantics of three segmentation tasks (edge detection, open-set, and interactive segmentation). Open-set Segmentation usually requires a high level of semantics and does not require interaction. Compared with [SAM](https://arxiv.org/abs/2304.02643), SEEM covers a wider range of interaction and semantics levels.  For example, SAM only supports limited interaction types like points and boxes, while misses high-semantic tasks since it does not output semantic labels itself. The reasons are: First, SEEM has a unified prompt encoder that encodes all visual and language prompts into a joint representation space. In consequence, SEEM can support more general usages. It has potential to extend to custom prompts. Second, SEEM works very well on text to mask (grounding segmentation) and outputs semantic-aware predictions.
 <div  align="center">    
-<img src="assets/imagescompare.jpg" width = "500" alt="assets/imagescompare.jpg" align=center />
+<img src="assets/images/compare.jpg" width = "500" alt="assets/images/compare.jpg" align=center />
 </div>
 <!-- This figure shows a comparison of our model with concurrent work SAM on the level of interactions and semantics. The x-axis and y-axis denote the level of interaction and semantics, respectively. Three segmentation tasks are shown, including Open-set Segmentation, Edge detection, and Interactive Segmentation. These tasks have different levels of interactions and semantics. For example, Open-set Segmentation usually requires a high level of semantics and does not require interaction. Compared with SAM, our model covers a wider range of interaction and semantics levels. For example, SAM only supports limited interaction types like points and boxes, while misses high-semantic tasks since it does not output semantic labels itself. Note that although we do not report edge detection results, our model can support it by simply converting masks to edges. -->
 
