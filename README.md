@@ -4,19 +4,27 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 
 :grapes: \[[Read our arXiv Paper](https://arxiv.org/pdf/2304.06718.pdf)\] &nbsp; :apple: \[[Try our Demo](http://semantic-sam.xyzou.net:6090/)\] 
 
-**One-Line Demo with Linux:**
+## :bookmark_tabs: Catalog
+We release the following content for **both SEEM and X-Decoder**:exclamation:
+- [x] Demo Code
+- [x] Model Checkpoint
+- [x] Comprehensive User Guide
+- [x] Training Code
+- [x] Evaluation Code
+
+:point_right: **One-Line SEEM Demo with Linux:**
 ```sh
 git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.git && sh aasets/scripts/run_demo.sh
 ```
 
-**Getting Started:**
+:round_pushpin: *[New]* **Getting Started:**
 
-[INSTALL.md](assets/readmes/INSTALL.md) <br>
-[DATASET.md](assets/readmes/DATASET.md) <br>
-[TRAIN.md](assets/readmes/TRAIN.md) <br>
-[EVAL.md](assets/readmes/EVAL.md)
+* [INSTALL.md](assets/readmes/INSTALL.md) <br>
+* [DATASET.md](assets/readmes/DATASET.md) <br>
+* [TRAIN.md](assets/readmes/TRAIN.md) <br>
+* [EVAL.md](assets/readmes/EVAL.md)
 
-:point_right: *[New]* **Latest Checkpoints and Numbers:**
+:round_pushpin: *[New]* **Latest Checkpoints and Numbers:**
 |                 |                                                                                      |          | COCO |      |      | Ref-COCOg |      |      | VOC   |       | SBD   |       |
 |-----------------|---------------------------------------------------------------------------------------------|----------|------|------|------|-----------|------|------|-------|-------|-------|-------|
 | Method          |  Checkpoint                                                                                  | backbone | PQ &uarr;  | mAP &uarr; | mIoU &uarr; | cIoU  &uarr; | mIoU &uarr; | AP50 &uarr; | NoC85 &darr; | NoC90 &darr;| NoC85 &darr;| NoC90 &darr;|
@@ -56,12 +64,6 @@ git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.gi
 * [Grounding SAM](https://github.com/IDEA-Research/Grounded-Segment-Anything) : Combining Grounding DINO and Segment Anything; [Grounding DINO](https://github.com/IDEA-Research/GroundingDINO): A strong open-set detection model.
 * [X-GPT](https://github.com/microsoft/X-Decoder/tree/xgpt) : Conversational Visual Agent supported by X-Decoder.
 * [LLaVA](https://github.com/haotian-liu/LLaVA) : Large Language and Vision Assistant.
-
-## :bookmark_tabs: Catelog
-- [x] SEEM Demo
-- [x] Inference and Installation Code
-- [x] Evaluation Code
-- [x] Training Code
 
 ## :bulb: Highlights
 Inspired by the appealing universal interface in LLMs, we are advocating a universal, interactive multi-modal interface for any type of segmentation with **ONE SINGLE MODEL**. We emphasize **4** important features of **SEEM** below.
