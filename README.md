@@ -10,17 +10,11 @@ git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.gi
 ```
 
 **Getting Started:**
-Environment:
-```sh
-```
 
-Training:
-```sh
-```
-
-Evaluation:
-```sh
-```
+Environment: [INSTALL.md]()
+DATASET: [DATASET.md]()
+Training: [TRAIN.md]()
+Evaluation: [EVAL.md]()
 
 :point_right: *[New]* **Latest Checkpoints and Numbers:**
 |                 |                                                                                      |          | COCO |      |      | Ref-COCOg |      |      | VOC   |       | SBD   |       |
@@ -34,6 +28,11 @@ Evaluation:
 | SEEM_v1      | [ckpt]()       | Focal-T  | 50.8 | 39.4 | 60.7 |   58.5    |  63.7 | 72.0 | 3.19  | 4.13  | *     | *     |
 | SEEM_v1      | [ckpt]()       | SAM-ViT-B  | 52.0 | 43.5 | 60.2 | 54.1      | 62.2 | 69.3 | 2.53  | 3.23  | *     | *     |
 | SEEM_v1       | [ckpt]()       | SAM-ViT-L  | 49.0 | 41.6 | 58.2 | 53.8      | 62.2 | 69.5 | 2.40  | 2.96  | *     | *     |
+
+SEEM_v0: Supporting Single Interactive object training and inference
+
+SEEM_v1: Supporting Multiple Interactive objects training and inference
+
 
 :fire: **Related projects:**
 
