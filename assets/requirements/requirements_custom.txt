@@ -1,0 +1,3 @@
+git+https://github.com/arogozhnikov/einops.git
+git+https://github.com/MaureenZOU/detectron2-xyz.git
+git+https://github.com/openai/whisper.git

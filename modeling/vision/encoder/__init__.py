@@ -1,5 +1,8 @@
 from .transformer_encoder_fpn import *
-from .transformer_encoder_deform import *
+try:
+    from .transformer_encoder_deform import *
+except:
+    print('Deformable Transformer Encoder is not available.')
 from .build import *
 
 
