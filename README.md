@@ -12,11 +12,8 @@ git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.gi
 **Getting Started:**
 
 [INSTALL.md]()
-
 [DATASET.md]()
-
 [TRAIN.md]()
-
 [EVAL.md]()
 
 :point_right: *[New]* **Latest Checkpoints and Numbers:**
