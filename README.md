@@ -11,9 +11,9 @@ git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.gi
 
 **Getting Started:**
 
-[INSTALL.md]()
-[DATASET.md]()
-[TRAIN.md]()
+[INSTALL.md]() <br>
+[DATASET.md]() <br>
+[TRAIN.md]() <br>
 [EVAL.md]()
 
 :point_right: *[New]* **Latest Checkpoints and Numbers:**
@@ -29,7 +29,8 @@ git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.gi
 | SEEM_v1      | [ckpt]()       | SAM-ViT-B  | 52.0 | 43.5 | 60.2 | 54.1      | 62.2 | 69.3 | 2.53  | 3.23  | *     | *     |
 | SEEM_v1       | [ckpt]()       | SAM-ViT-L  | 49.0 | 41.6 | 58.2 | 53.8      | 62.2 | 69.5 | 2.40  | 2.96  | *     | *     |
 
-SEEM_v0: Supporting Single Interactive object training and inference; SEEM_v1: Supporting Multiple Interactive objects training and inference
+SEEM_v0: Supporting Single Interactive object training and inference <br>
+SEEM_v1: Supporting Multiple Interactive objects training and inference
 
 
 :fire: **Related projects:**
