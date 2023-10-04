@@ -1,1 +1,0 @@
-from .interactive import interactive_infer_video, interactive_infer_image

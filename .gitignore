@@ -96,7 +96,7 @@ amlt/*
 MODELS
 MODELS/*
 
-kill.sh
+*.sh
 
 draws/
 plot/

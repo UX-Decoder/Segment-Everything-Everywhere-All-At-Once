@@ -1,0 +1,373 @@
+# --------------------------------------------------------
+# X-Decoder -- Generalized Decoding for Pixel, Image, and Language
+# Copyright (c) 2022 Microsoft
+# Licensed under The MIT License [see LICENSE for details]
+# Written by Xueyan Zou (xueyan@cs.wisc.edu)
+# --------------------------------------------------------
+
+# Define Test/Trainer/Saving
+PIPELINE: XDecoderPipeline
+TRAINER: xdecoder
+SAVE_DIR: '../../data/output/test'
+base_path: "./"
+
+# Resume Logistic
+RESUME: false
+WEIGHT: false
+RESET_DATA_LOADER: false
+RESUME_FROM: ''
+EVAL_AT_START: False
+
+# Logging and Debug
+WANDB: False
+LOG_EVERY: 100
+FIND_UNUSED_PARAMETERS: false
+
+# Speed up training
+FP16: false
+PORT: '36873'
+
+# misc
+LOADER:
+  JOINT: True
+  KEY_DATASET: 'coco'
+
+##################
+# Task settings
+##################
+VERBOSE: true
+MODEL:
+  NAME: xdecoder_model
+  HEAD: xdecoder_head
+  MASK_ON: false
+  KEYPOINT_ON: false
+  LOAD_PROPOSALS: false
+  DIM_PROJ: 512
+  BACKBONE_DIM: 1024
+  TEXT:
+    ARCH: vlpencoder
+    NAME: transformer
+    TOKENIZER: clip
+    CONTEXT_LENGTH: 77 # 77
+    WIDTH: 512
+    HEADS: 8
+    LAYERS: 12 # 6
+    AUTOGRESSIVE: True
+  BACKBONE:
+    NAME: davit
+    PRETRAINED: ''
+    LOAD_PRETRAINED: false
+    PRETRAINED_LAYERS: '*'
+    DAVIT:
+      DROP_PATH_RATE: 0.3
+      PATCH_SIZE: [7, 2, 2, 2]
+      PATCH_STRIDE: [4, 2, 2, 2]
+      PATCH_PADDING: [3, 0, 0, 0]
+      PATCH_PRENORM: [false, true, true, true]
+      DIM_EMBED: [128, 256, 512, 1024]
+      NUM_HEADS: [4, 8, 16, 32]
+      NUM_GROUPS: [4, 8, 16, 32]
+      DEPTHS: [1, 1, 9, 1]
+      OUT_FEATURES: ["res2", "res3", "res4", "res5"]
+      OUT_INDICES: [0, 1, 2, 3]
+      ENABLE_CHECKPOINT: False
+  ENCODER:
+    NAME: transformer_encoder_fpn
+    IGNORE_VALUE: 255
+    NUM_CLASSES: 133
+    LOSS_WEIGHT: 1.0
+    CONVS_DIM: 512
+    MASK_DIM: 512
+    NORM: "GN"
+    IN_FEATURES: ["res2", "res3", "res4", "res5"]
+    DEFORMABLE_TRANSFORMER_ENCODER_IN_FEATURES: ["res3", "res4", "res5"]
+    COMMON_STRIDE: 4
+    TRANSFORMER_ENC_LAYERS: 6
+  DECODER:
+    NAME: xdecoder
+    TRANSFORMER_IN_FEATURE: "multi_scale_pixel_decoder"
+    MASK: True
+    GROUNDING:
+      ENABLED: True
+      MAX_LEN: 5
+      TEXT_WEIGHT: 2.0
+      CLASS_WEIGHT: 0.5
+    DETECTION: False
+    CAPTION:
+      ENABLED: True
+      PHRASE_PROB: 0.0
+      SIM_THRES: 0.95
+    CAPTIONING:
+      ENABLED: True
+      STEP: 50
+    RETRIEVAL:
+      ENABLED: True
+      DIM_IMG: 768
+      ENSEMBLE: True
+    DEEP_SUPERVISION: True
+    NO_OBJECT_WEIGHT: 0.1
+    CAPTION_WEIGHT: 1.0
+    CAPTIONING_WEIGHT: 2.0
+    RETRIEVAL_WEIGHT: 2.0
+    BACKBONER_WEIGHT: 8.0
+    GCLASS_WEIGHT: 0.4
+    GMASK_WEIGHT: 1.0
+    GDICE_WEIGHT: 1.0
+    OCLASS_WEIGHT: 0.4
+    OMASK_WEIGHT: 1.0 
+    ODICE_WEIGHT: 1.0
+    CLASS_WEIGHT: 2.0
+    MASK_WEIGHT: 5.0
+    DICE_WEIGHT: 5.0
+    BBOX_WEIGHT: 5.0
+    GIOU_WEIGHT: 2.0
+    HIDDEN_DIM: 512
+    NUM_OBJECT_QUERIES: 201
+    NHEADS: 8
+    DROPOUT: 0.0
+    DIM_FEEDFORWARD: 2048
+    PRE_NORM: False
+    ENFORCE_INPUT_PROJ: False
+    SIZE_DIVISIBILITY: 32
+    TRAIN_NUM_POINTS: 12544
+    OVERSAMPLE_RATIO: 3.0
+    IMPORTANCE_SAMPLE_RATIO: 0.75
+    DEC_LAYERS: 10  # 9 decoder layers, add one for the loss on learnable query
+    TOP_GROUNDING_LAYERS: 3
+    TOP_CAPTION_LAYERS: 3
+    TOP_CAPTIONING_LAYERS: 3
+    TOP_RETRIEVAL_LAYERS: 3
+    TEST:
+      SEMANTIC_ON: True
+      INSTANCE_ON: True
+      PANOPTIC_ON: True
+      OVERLAP_THRESHOLD: 0.8
+      OBJECT_MASK_THRESHOLD: 0.8
+      SEM_SEG_POSTPROCESSING_BEFORE_INFERENCE: false
+
+COCO:
+  INPUT:
+    MIN_SIZE_TRAIN: 800
+    MAX_SIZE_TRAIN: 1333
+    MIN_SIZE_TRAIN_SAMPLING: 'choice'
+    MIN_SIZE_TEST: 800
+    MAX_SIZE_TEST: 1333
+    IMAGE_SIZE: 1024
+    MIN_SCALE: 0.1
+    MAX_SCALE: 2.0
+    DATASET_MAPPER_NAME: "coco_panoptic_lsj"
+    IGNORE_VALUE: 255
+    COLOR_AUG_SSD: False
+    SIZE_DIVISIBILITY: 32
+    RANDOM_FLIP: "horizontal"
+    MASK_FORMAT: "polygon"
+    FORMAT: "RGB"
+    CROP:
+      ENABLED: True
+  DATASET:
+    DATASET: 'coco'
+  TEST:
+    DETECTIONS_PER_IMAGE: 100
+    NAME: coco_eval
+    IOU_TYPE: ['bbox', 'segm']
+    USE_MULTISCALE: false
+    BATCH_SIZE_TOTAL: 8
+    MODEL_FILE: ''
+    AUG:
+      ENABLED: False
+  TRAIN:
+    ASPECT_RATIO_GROUPING: true
+    BATCH_SIZE_TOTAL: 2
+    BATCH_SIZE_PER_GPU: 1
+    SHUFFLE: true
+  DATALOADER:
+    FILTER_EMPTY_ANNOTATIONS: False
+    NUM_WORKERS: 2
+    LOAD_PROPOSALS: False
+    SAMPLER_TRAIN: "TrainingSampler"
+    ASPECT_RATIO_GROUPING: True
+
+VLP:
+  INPUT:
+    IMAGE_SIZE: 224
+    DATASET_MAPPER_NAME: "vlpretrain"
+    IGNORE_VALUE: 255
+    COLOR_AUG_SSD: False
+    SIZE_DIVISIBILITY: 32
+    MASK_FORMAT: "polygon"
+    FORMAT: "RGB"
+    CROP:
+      ENABLED: True
+  TRAIN:
+    BATCH_SIZE_TOTAL: 2
+    BATCH_SIZE_PER_GPU: 1
+  TEST:
+    BATCH_SIZE_TOTAL: 256
+  DATALOADER:
+    FILTER_EMPTY_ANNOTATIONS: False
+    NUM_WORKERS: 16
+    LOAD_PROPOSALS: False
+    SAMPLER_TRAIN: "TrainingSampler"
+    ASPECT_RATIO_GROUPING: True
+
+INPUT:
+  PIXEL_MEAN: [123.675, 116.280, 103.530]
+  PIXEL_STD: [58.395, 57.120, 57.375]
+
+DATASETS:
+  TRAIN: ["coco_2017_train_panoptic_filtall_with_sem_seg_caption_grounding", "vlp_train"]
+  # open vocabulary segmentation evaluation.
+  # TEST: ["ade20k_panoptic_val"]
+  TEST: ["coco_2017_val_panoptic_with_sem_seg", "vlp_captioning_val", "refcocog_val_umd", "vlp_val", "ade20k_panoptic_val"]
+  # TEST: ["ade20k_panoptic_val", "ade20k_full_sem_seg_val", "sunrgbd_37_val_seg", "scannet_21_val_seg", "scannet_21_panoptic_val", "scannet_41_val_seg", "cityscapes_fine_panoptic_val", "cityscapes_fine_instance_seg_val", "cityscapes_fine_sem_seg_val", "bdd10k_val_sem_seg", "bdd10k_40_panoptic_val"]
+  # Supervised metrics evaluation.
+  # TEST: ["vlp_captioning_val", "refcocog_val_umd", "vlp_val"]
+  SIZE_DIVISIBILITY: 32
+  PROPOSAL_FILES_TRAIN: []
+
+DATALOADER:
+  FILTER_EMPTY_ANNOTATIONS: False
+  NUM_WORKERS: 16
+  LOAD_PROPOSALS: False
+  SAMPLER_TRAIN: "TrainingSampler"
+  ASPECT_RATIO_GROUPING: True
+
+# Detectron2 training config for optimizer and lr scheduler
+SOLVER:
+  BASE_LR: 0.0001
+  STEPS: [0.88889, 0.96296]
+  MAX_ITER: 1
+  GAMMA: 0.1
+  WARMUP_FACTOR: 1.0
+  WARMUP_ITERS: 10
+  WARMUP_METHOD: "linear"
+  WEIGHT_DECAY: 0.05
+  OPTIMIZER: "ADAMW"
+  LR_SCHEDULER_NAME: "WarmupMultiStepLR"
+  LR_MULTIPLIER:
+    backbone: 0.1
+    lang_encoder: 0.1
+  WEIGHT_DECAY_NORM: 0.0
+  WEIGHT_DECAY_EMBED: 0.0
+  CLIP_GRADIENTS:
+    ENABLED: True
+    CLIP_TYPE: "full_model"
+    CLIP_VALUE: 5.0 # 0.01
+    NORM_TYPE: 2.0
+  AMP:
+    ENABLED: True
+  MAX_NUM_EPOCHS: 50
+
+# Evaluation Dataset
+ADE20K:
+  INPUT:
+    MIN_SIZE_TRAIN: 640
+    MIN_SIZE_TRAIN_SAMPLING: "choice"
+    MIN_SIZE_TEST: 640
+    MAX_SIZE_TRAIN: 2560
+    MAX_SIZE_TEST: 2560
+    MASK_FORMAT: "polygon"
+    CROP:
+      ENABLED: True
+      TYPE: "absolute"
+      SIZE: (640, 640)
+      SINGLE_CATEGORY_MAX_AREA: 1.0
+    COLOR_AUG_SSD: True
+    SIZE_DIVISIBILITY: 640  # used in dataset mapper
+    DATASET_MAPPER_NAME: "mask_former_panoptic"
+    FORMAT: "RGB"
+  DATASET:
+    DATASET: 'ade'
+  TEST:
+    BATCH_SIZE_TOTAL: 8
+
+
+REF:
+  INPUT:
+    PIXEL_MEAN: [123.675, 116.280, 103.530]
+    PIXEL_STD: [58.395, 57.120, 57.375]
+    MIN_SIZE_TEST: 512
+    MAX_SIZE_TEST: 1024
+    FORMAT: "RGB"
+  DATALOADER:
+    FILTER_EMPTY_ANNOTATIONS: False
+    NUM_WORKERS: 0
+    LOAD_PROPOSALS: False
+    SAMPLER_TRAIN: "TrainingSampler"
+    ASPECT_RATIO_GROUPING: False
+  TEST:
+    BATCH_SIZE_TOTAL: 8
+
+SUN:
+  INPUT:
+    PIXEL_MEAN: [123.675, 116.280, 103.530]
+    PIXEL_STD: [58.395, 57.120, 57.375]
+    MIN_SIZE_TEST: 512
+    MAX_SIZE_TEST: 1024
+  DATALOADER:
+    FILTER_EMPTY_ANNOTATIONS: False
+    NUM_WORKERS: 0
+    LOAD_PROPOSALS: False
+    SAMPLER_TRAIN: "TrainingSampler"
+    ASPECT_RATIO_GROUPING: False
+  TEST:
+    BATCH_SIZE_TOTAL: 8
+
+SCAN:
+  INPUT:
+    PIXEL_MEAN: [123.675, 116.280, 103.530]
+    PIXEL_STD: [58.395, 57.120, 57.375]
+    MIN_SIZE_TEST: 512
+    MAX_SIZE_TEST: 1024
+  DATALOADER:
+    FILTER_EMPTY_ANNOTATIONS: False
+    NUM_WORKERS: 0
+    LOAD_PROPOSALS: False
+    SAMPLER_TRAIN: "TrainingSampler"
+    ASPECT_RATIO_GROUPING: False
+  TEST:
+    BATCH_SIZE_TOTAL: 8
+
+BDD:
+  INPUT:
+    PIXEL_MEAN: [123.675, 116.280, 103.530]
+    PIXEL_STD: [58.395, 57.120, 57.375]
+    MIN_SIZE_TEST: 800
+    MAX_SIZE_TEST: 1333
+  DATALOADER:
+    FILTER_EMPTY_ANNOTATIONS: False
+    NUM_WORKERS: 0
+    LOAD_PROPOSALS: False
+    SAMPLER_TRAIN: "TrainingSampler"
+    ASPECT_RATIO_GROUPING: False
+  TEST:
+    BATCH_SIZE_TOTAL: 8
+
+CITY:
+  INPUT:
+    MIN_SIZE_TRAIN: 1024 # !!python/object/apply:eval ["[int(x * 0.1 * 1024) for x in range(5, 21)]"]
+    MIN_SIZE_TRAIN_SAMPLING: "choice"
+    MIN_SIZE_TEST: 1024
+    MAX_SIZE_TRAIN: 4096
+    MAX_SIZE_TEST: 2048
+    CROP:
+      ENABLED: True
+      TYPE: "absolute"
+      SIZE: (512, 1024)
+      SINGLE_CATEGORY_MAX_AREA: 1.0
+    COLOR_AUG_SSD: True
+    SIZE_DIVISIBILITY: -1
+    FORMAT: "RGB"
+    DATASET_MAPPER_NAME: "mask_former_panoptic"
+    MASK_FORMAT: "polygon"
+  TEST:
+    EVAL_PERIOD: 5000
+    BATCH_SIZE_TOTAL: 8
+    AUG:
+      ENABLED: False
+      MIN_SIZES: [512, 768, 1024, 1280, 1536, 1792]
+      MAX_SIZE: 4096
+      FLIP: True
+  DATALOADER:
+    FILTER_EMPTY_ANNOTATIONS: True
+    NUM_WORKERS: 4
