@@ -19,7 +19,7 @@ We release the following contents for **both SEEM and X-Decoder**:exclamation:
 
 :point_right: **One-Line SEEM Demo with Linux:**
 ```sh
-git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.git && sh aasets/scripts/run_demo.sh
+git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.git && sh assets/scripts/run_demo.sh
 ```
 
 :round_pushpin: *[New]* **Getting Started:**
