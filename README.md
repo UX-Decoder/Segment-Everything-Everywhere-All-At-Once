@@ -1,8 +1,10 @@
 # 👀*SEEM:* Segment Everything Everywhere All at Once
 
+:grapes: \[[Read our arXiv Paper](https://arxiv.org/pdf/2304.06718.pdf)\] &nbsp; :apple: \[[Try our Demo](http://semantic-sam.xyzou.net:6090/)\] 
+
 We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **M**ulti-modal prompts all at once. SEEM allows users to easily segment an image using prompts of different types including visual prompts (points, marks, boxes, scribbles and image segments) and language prompts (text and audio), etc. It can also work with any combination of prompts or generalize to custom prompts!
 
-:grapes: \[[Read our arXiv Paper](https://arxiv.org/pdf/2304.06718.pdf)\] &nbsp; :apple: \[[Try our Demo](http://semantic-sam.xyzou.net:6090/)\] 
+by [Xueyan Zou*](https://maureenzou.github.io/), [Jianwei Yang*](https://jwyang.github.io/), [Hao Zhang*](https://scholar.google.com/citations?user=B8hPxMQAAAAJ&hl=en),  [Feng Li*](https://fengli-ust.github.io/), [Linjie Li](https://scholar.google.com/citations?user=WR875gYAAAAJ&hl=en), [Jianfeng Wang](http://jianfengwang.me/), [Lijuan Wang](https://scholar.google.com/citations?user=cDcWXuIAAAAJ&hl=zh-CN), [Jianfeng Gao^](https://www.microsoft.com/en-us/research/people/jfgao/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fjfgao%2F), [Yong Jae Lee^](https://pages.cs.wisc.edu/~yongjaelee/), in **NeurIPS 2023**.
 
 ## :bookmark_tabs: Catalog
 We release the following contents for **both SEEM and X-Decoder**:exclamation:
@@ -42,6 +44,7 @@ git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.gi
 
 ## :rocket: Updates
 * **[2023.10.04]** We are excited to release :white_check_mark: [training/evaluation/demo code](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/edit/v1.0/README.md#bookmark_tabs-catalog), :white_check_mark: [new checkpoints](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/edit/v1.0/README.md#bookmark_tabs-catalog), and :white_check_mark: [comprehensive readmes](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/edit/v1.0/README.md#bookmark_tabs-catalog) for ***both X-Decoder and SEEM***!
+* **[2023.09.25]** Our work has been accepted to NeurIPS 2023!
 * **[2023.07.27]** We are excited to release our [X-Decoder](https://github.com/microsoft/X-Decoder) training code! We will release its descendant SEEM training code very soon!
 * **[2023.07.10]** We release [Semantic-SAM](https://github.com/UX-Decoder/Semantic-SAM), a universal image segmentation model to enable segment and recognize anything at any desired granularity. Code and checkpoint are available!
 * **[2023.05.02]** We have released the [SEEM Focal-L](https://projects4jw.blob.core.windows.net/x-decoder/release/seem_focall_v1.pt) and [X-Decoder Focal-L](https://projects4jw.blob.core.windows.net/x-decoder/release/xdecoder_focall_last.pt) checkpoints and [configs](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/blob/main/demo_code/configs/seem/seem_focall_lang.yaml)!
