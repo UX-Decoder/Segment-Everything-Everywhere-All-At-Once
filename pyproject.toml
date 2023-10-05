@@ -12,6 +12,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: Apache Software License",
 ]
+
 dependencies = [
     "torch==2.1.0",
     "torchvision==0.16.0",
@@ -46,8 +47,13 @@ dependencies = [
     "deepspeed==0.10.3",
     "wandb==0.15.12",
     "infinibatch==0.1.1",
-    "gradio==3.42.0"
+    "gradio==3.42.0",     
+    "openai-whisper",    
 ]
+
+[tool.poetry.dependencies]
+detectron2 = {git = "https://github.com/MaureenZOU/detectron2-xyz.git"}
+
 
 [project.urls]
 "Paper" = "https://arxiv.org/abs/2304.06718"
