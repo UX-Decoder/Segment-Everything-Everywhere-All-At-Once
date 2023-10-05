@@ -96,7 +96,9 @@ amlt/*
 MODELS
 MODELS/*
 
-*.sh
+eval_seem.sh
+train_seem.sh
+train_seem_v0.sh
 
 draws/
 plot/
