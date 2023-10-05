@@ -60,6 +60,9 @@ wget https://huggingface.co/xdecoder/X-Decoder/resolve/main/xdecoder_focalt_last
 # Focal-L X-Decoder
 wget https://huggingface.co/xdecoder/X-Decoder/resolve/main/xdecoder_focall_last_oq101.pt
 
+# Focal-B UniCL Language
+wget https://huggingface.co/xdecoder/X-Decoder/resolve/main/focalb_lang_unicl.pt
+
 # ViT-B SAM
 wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth
 
