@@ -2,11 +2,12 @@ import random
 
 import torch
 import nltk
-nltk.data.path.append('/mnt/data/nltk_data')
 import numpy as np
 
 from utils.constants import IMAGENET_DEFAULT_TEMPLATES
 
+nltk.download('punkt', quiet=True)
+nltk.download('averaged_perceptron_tagger', quiet=True)
 
 def get_tag(tokenized, tags):
     if not isinstance(tags, (list, tuple)):
