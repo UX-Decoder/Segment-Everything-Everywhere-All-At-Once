@@ -6,6 +6,9 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 
 by [Xueyan Zou*](https://maureenzou.github.io/), [Jianwei Yang*](https://jwyang.github.io/), [Hao Zhang*](https://scholar.google.com/citations?user=B8hPxMQAAAAJ&hl=en),  [Feng Li*](https://fengli-ust.github.io/), [Linjie Li](https://scholar.google.com/citations?user=WR875gYAAAAJ&hl=en), [Jianfeng Wang](http://jianfengwang.me/), [Lijuan Wang](https://scholar.google.com/citations?user=cDcWXuIAAAAJ&hl=zh-CN), [Jianfeng Gao^](https://www.microsoft.com/en-us/research/people/jfgao/?from=http%3A%2F%2Fresearch.microsoft.com%2Fen-us%2Fum%2Fpeople%2Fjfgao%2F), [Yong Jae Lee^](https://pages.cs.wisc.edu/~yongjaelee/), in **NeurIPS 2023**.
 
+![SEEM design](assets/images/teaser_new.png?raw=true)
+A brief introduction of all the generic and interactive segmentation tasks we can do.
+
 ## :bookmark_tabs: Catalog
 We release the following contents for **both SEEM and X-Decoder**:exclamation:
 - [x] Demo Code
@@ -75,9 +78,6 @@ Inspired by the appealing universal interface in LLMs, we are advocating a unive
 2. **Compositionaliy**: deal with any compositions of prompts;
 3. **Interactivity**: interact with user in multi-rounds, thanks to the memory prompt of **SEEM** to store the session history;
 4. **Semantic awareness**: give a semantic label to any predicted mask;
-
-![SEEM design](assets/images/teaser_new.png?raw=true)
-A brief introduction of all the generic and interactive segmentation tasks we can do.
 
 ## :unicorn: How to use the demo
 - Try our default examples first;
