@@ -5,7 +5,7 @@ We introduce **SEEM** that can **S**egment **E**verything **E**verywhere with **
 :grapes: \[[Read our arXiv Paper](https://arxiv.org/pdf/2304.06718.pdf)\] &nbsp; :apple: \[[Try our Demo](http://semantic-sam.xyzou.net:6090/)\] 
 
 ## :bookmark_tabs: Catalog
-We release the following content for **both SEEM and X-Decoder**:exclamation:
+We release the following contents for **both SEEM and X-Decoder**:exclamation:
 - [x] Demo Code
 - [x] Model Checkpoint
 - [x] Comprehensive User Guide
