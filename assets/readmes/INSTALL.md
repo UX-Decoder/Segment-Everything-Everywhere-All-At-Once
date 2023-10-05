@@ -43,7 +43,7 @@ export PYTHONPATH=$PYTHONPATH:/pth/to/xdecoder_data/coco_caption
 
 **Pretrained Checkpoint**
 
-Pretrained Checkpoint for X-Decoder
+X-Decoder:
 ```sh
 # Focal-T UniCL
 wget https://huggingface.co/xdecoder/X-Decoder/resolve/main/focalt_in21k_yfcc_gcc_xdecoder_unicl.pt
@@ -51,3 +51,20 @@ wget https://huggingface.co/xdecoder/X-Decoder/resolve/main/focalt_in21k_yfcc_gc
 # Focal-L UniCL
 wget https://huggingface.co/xdecoder/X-Decoder/resolve/main/focall_vision_focalb_lang_unicl.pt
 ```
+
+SEEM:
+```
+# Focal-T X-Decoder
+wget https://huggingface.co/xdecoder/X-Decoder/resolve/main/xdecoder_focalt_last.pt
+
+# Focal-L X-Decoder
+wget https://huggingface.co/xdecoder/X-Decoder/resolve/main/xdecoder_focall_last_oq101.pt
+
+# ViT-B SAM
+wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_b_01ec64.pth
+
+# ViT-L SAM
+wget https://dl.fbaipublicfiles.com/segment_anything/sam_vit_l_0b3195.pth
+
+```
+
