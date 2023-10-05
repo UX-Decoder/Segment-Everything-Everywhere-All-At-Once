@@ -42,3 +42,12 @@ export PYTHONPATH=$PYTHONPATH:/pth/to/xdecoder_data/coco_caption
 ```
 
 **Pretrained Checkpoint**
+
+Pretrained Checkpoint for X-Decoder
+```sh
+# Focal-T UniCL
+wget https://huggingface.co/xdecoder/X-Decoder/resolve/main/focalt_in21k_yfcc_gcc_xdecoder_unicl.pt
+
+# Focal-L UniCL
+wget https://huggingface.co/xdecoder/X-Decoder/resolve/main/focall_vision_focalb_lang_unicl.pt
+```
