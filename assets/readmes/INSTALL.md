@@ -25,9 +25,20 @@ sudo apt install ffmpeg
 Please refer to [DATASET.md](assets/readmes/DATASET.md).
 
 **Evaluation Tool**
-```
+```sh
+# save coco_caption.zip to .xdecoder_data
+wget https://huggingface.co/xdecoder/X-Decoder/resolve/main/coco_caption.zip
+unzip coco_caption.zip
 ```
 
 **Environment Variables**
+```sh
+export DETECTRON2_DATASETS=/pth/to/xdecoder_data
+export DATASET=/pth/to/xdecoder_data
+export DATASET2=/pth/to/xdecoder_data
+export VLDATASET=/pth/to/xdecoder_data
+export PATH=$PATH:/pth/to/xdecoder_data/coco_caption/jre1.8.0_321/bin
+export PYTHONPATH=$PYTHONPATH:/pth/to/xdecoder_data/coco_caption
+```
 
 **Pretrained Checkpoint**
