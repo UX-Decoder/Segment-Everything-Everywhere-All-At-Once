@@ -11,7 +11,8 @@ A brief introduction of all the generic and interactive segmentation tasks we ca
 ![SEEM design](assets/images/teaser_new.png?raw=true)
 
 ## :rocket: Updates
-* **[2023.10.08]** We just released the training [log](https://huggingface.co/xdecoder/SEEM/raw/main/seem_v1_focalt_unicl.log) for SEEM-Tiny-v1!
+* **[2023.10.10]** We release the training [log](https://huggingface.co/xdecoder/SEEM/raw/main/seem_v1_focall_unicl.log) for SEEM-Large-v1!
+* **[2023.10.08]** We release the training [log](https://huggingface.co/xdecoder/SEEM/raw/main/seem_v1_focalt_unicl.log) for SEEM-Tiny-v1!
 * **[2023.10.04]** We are excited to release :white_check_mark: [training/evaluation/demo code](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/edit/v1.0/README.md#bookmark_tabs-catalog), :white_check_mark: [new checkpoints](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/edit/v1.0/README.md#bookmark_tabs-catalog), and :white_check_mark: [comprehensive readmes](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/edit/v1.0/README.md#bookmark_tabs-catalog) for ***both X-Decoder and SEEM***!
 * **[2023.09.25]** Our work has been accepted to NeurIPS 2023!
 * **[2023.07.27]** We are excited to release our [X-Decoder](https://github.com/microsoft/X-Decoder) training code! We will release its descendant SEEM training code very soon!
@@ -43,16 +44,17 @@ git clone git@github.com:UX-Decoder/Segment-Everything-Everywhere-All-At-Once.gi
 
 :round_pushpin: *[New]* **Latest Checkpoints and Numbers:**
 |                 |                                                                                      |          | COCO |      |      | Ref-COCOg |      |      | VOC   |       | SBD   |       |
-|-----------------|---------------------------------------------------------------------------------------------|----------|------|------|------|-----------|------|------|-------|-------|-------|-------|
-| Method          |  Checkpoint                                                                                  | backbone | PQ &uarr;  | mAP &uarr; | mIoU &uarr; | cIoU  &uarr; | mIoU &uarr; | AP50 &uarr; | NoC85 &darr; | NoC90 &darr;| NoC85 &darr;| NoC90 &darr;|
+|-----------------|---------------------------------------------------------------------------------------------|------------|------|------|------|-----------|------|------|-------|-------|-------|-------|
+| Method          |  Checkpoint                                                                                  | Backbone | PQ &uarr;  | mAP &uarr; | mIoU &uarr; | cIoU  &uarr; | mIoU &uarr; | AP50 &uarr; | NoC85 &darr; | NoC90 &darr;| NoC85 &darr;| NoC90 &darr;|
 | X-Decoder       |  [ckpt](https://huggingface.co/xdecoder/X-Decoder/resolve/main/xdecoder_focalt_last.pt) | Focal-T  | 50.8 | 39.5 | 62.4 | 57.6      | 63.2 | 71.6 | -     | -     | -     | -     |
 | X-Decoder-oq201 |  [ckpt](https://huggingface.co/xdecoder/X-Decoder/resolve/main/xdecoder_focall_last.pt) | Focal-L  | 56.5 | 46.7 | 67.2 | 62.8      | 67.5 | 76.3 | -     | -     | -     | -     |
 | SEEM_v0            | [ckpt](https://huggingface.co/xdecoder/SEEM/resolve/main/seem_focalt_v0.pt)      | Focal-T  | 50.6 | 39.4 | 60.9 | 58.5      | 63.5 | 71.6 | 3.54  | 4.59  | *     | *     |
 | SEEM_v0            |  -                                                                                           | Davit-d3 | 56.2 | 46.8 | 65.3 | 63.2      | 68.3 | 76.6 | 2.99  | 3.89  | 5.93  | 9.23  |
 | SEEM_v0      | [ckpt](https://huggingface.co/xdecoder/SEEM/resolve/main/seem_focall_v0.pt)       | Focal-L  | 56.2 | 46.4 | 65.5 | 62.8      | 67.7 | 76.2 | 3.04  | 3.85  | *     | *     |
-| SEEM_v1      | [ckpt](https://huggingface.co/xdecoder/SEEM/resolve/main/seem_focalt_v1.pt), [log](https://huggingface.co/xdecoder/SEEM/raw/main/seem_v1_focalt_unicl.log)       | Focal-T  | 50.8 | 39.4 | 60.7 |   58.5    |  63.7 | 72.0 | 3.19  | 4.13  | *     | *     |
 | SEEM_v1      | [ckpt](https://huggingface.co/xdecoder/SEEM/resolve/main/seem_samvitb_v1.pt)       | SAM-ViT-B  | 52.0 | 43.5 | 60.2 | 54.1      | 62.2 | 69.3 | 2.53  | 3.23  | *     | *     |
 | SEEM_v1       | [ckpt](https://huggingface.co/xdecoder/SEEM/resolve/main/seem_samvitl_v1.pt)       | SAM-ViT-L  | 49.0 | 41.6 | 58.2 | 53.8      | 62.2 | 69.5 | 2.40  | 2.96  | *     | *     |
+| SEEM_v1      | [ckpt](https://huggingface.co/xdecoder/SEEM/resolve/main/seem_focalt_v1.pt)/[log](https://huggingface.co/xdecoder/SEEM/raw/main/seem_v1_focalt_unicl.log)       | Focal-T  | 50.8 | 39.4 | 60.7 |   58.5    |  63.7 | 72.0 | 3.19  | 4.13  | *     | *     |
+| SEEM_v1      | [ckpt](https://huggingface.co/xdecoder/SEEM/blob/main/seem_focall_v1.pt)/[log](https://huggingface.co/xdecoder/SEEM/blob/main/seem_v1_focall_unicl.log)      | Focal-L  | 56.1 | 46.3 | 65.8 |   62.4    |  67.8 | 76.0 | 2.66  | 3.44  | *     | *     |
 
 **SEEM_v0:** Supporting Single Interactive object training and inference <br>
 **SEEM_v1:** Supporting Multiple Interactive objects training and inference
