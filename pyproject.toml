@@ -32,7 +32,6 @@ dependencies = [
     "ftfy==6.1.1",
     "regex==2023.10.3",
     "nltk==3.8.1",
-    "mpi4py==3.1.5",    
     "vision-datasets==0.2.2",
     "cython==3.0.2",
     "pycocotools==2.0.7",
