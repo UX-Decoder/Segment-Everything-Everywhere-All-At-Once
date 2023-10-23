@@ -42,7 +42,7 @@ dependencies = [
     "scikit-image==0.21.0",
     "mup==1.0.0",
     "accelerate==0.23.0",
-    "kornia==0.7.0",
+    "kornia==0.6.8",
     "deepspeed==0.10.3",
     "wandb==0.15.12",
     "infinibatch==0.1.1",
@@ -60,7 +60,7 @@ detectron2 = {git = "https://github.com/MaureenZOU/detectron2-xyz.git"}
 "Bug Tracker" = "https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/issues"
 
 [tool.setuptools.packages.find]
-exclude = ["assets*"]
+exclude = ["assets*", "demo*"]
 
 [tool.wheel]
-exclude = ["assets*"]
+exclude = ["assets*", "demo*"]

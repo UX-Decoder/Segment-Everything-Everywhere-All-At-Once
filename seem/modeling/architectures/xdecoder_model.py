@@ -26,8 +26,8 @@ from ..body import build_xdecoder_head
 from ..modules import sem_seg_postprocess, SetCriterion, HungarianMatcher, bbox_postprocess
 from ..language import build_language_encoder
 from ..language.loss import vl_similarity, image_text_contrastive_loss_queue
-from utils.prompt_engineering import prompt_engineering
-from utils.constants import COCO_PANOPTIC_CLASSES
+from seem.utils.prompt_engineering import prompt_engineering
+from seem.utils.constants import COCO_PANOPTIC_CLASSES
 
 st = LancasterStemmer()
 

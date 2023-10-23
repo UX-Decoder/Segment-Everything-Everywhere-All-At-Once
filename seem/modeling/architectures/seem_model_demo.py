@@ -25,8 +25,8 @@ from ..body import build_xdecoder_head
 from ..modules import sem_seg_postprocess, SetCriterion, HungarianMatcher, bbox_postprocess
 from ..language import build_language_encoder
 from ..language.loss import vl_similarity
-from utils.prompt_engineering import prompt_engineering
-from utils.constants import COCO_PANOPTIC_CLASSES
+from seem.utils.prompt_engineering import prompt_engineering
+from seem.utils.constants import COCO_PANOPTIC_CLASSES
 
 
 class GeneralizedSEEM(nn.Module):
@@ -58,32 +58,7 @@ class GeneralizedSEEM(nn.Module):
         interactive_mode: str,
         interactive_iter: str,
         dilation_kernel: torch.Tensor,
-        train_max_iter: int,
     ):
-        """
-        Args:
-            backbone: a backbone module, must follow detectron2's backbone interface
-            sem_seg_head: a module that predicts semantic segmentation from backbone features
-            criterion: a module that defines the loss
-            num_queries: int, number of queries
-            object_mask_threshold: float, threshold to filter query based on classification score
-                for panoptic segmentation inference
-            overlap_threshold: overlap threshold used in general inference for panoptic segmentation
-            metadata: dataset meta, get `thing` and `stuff` category names for panoptic
-                segmentation inference
-            size_divisibility: Some backbones require the input height and width to be divisible by a
-                specific integer. We can use this to override such requirement.
-            sem_seg_postprocess_before_inference: whether to resize the prediction back
-                to original input size before semantic segmentation inference or after.
-                For high-resolution dataset like Mapillary, resizing predictions before
-                inference will cause OOM error.
-            pixel_mean, pixel_std: list or tuple with #channels element, representing
-                the per-channel mean and std to be used to normalize the input image
-            semantic_on: bool, whether to output semantic segmentation prediction
-            instance_on: bool, whether to output instance segmentation prediction
-            panoptic_on: bool, whether to output panoptic segmentation prediction
-            test_topk_per_image: int, instance segmentation parameter, keep topk instances per image
-        """
         super().__init__()
         self.backbone = backbone
         self.sem_seg_head = sem_seg_head
@@ -109,10 +84,9 @@ class GeneralizedSEEM(nn.Module):
         # caption argument
         self.task_switch = task_switch
         self.phrase_prob = phrase_prob
-        self.train_max_iter = train_max_iter
 
         self.test_topk_per_image = test_topk_per_image
-        self.train_class_names = get_class_names(train_dataset_name)
+        self.train_class_names = None
         self.interactive_mode = interactive_mode
         self.interactive_iter = interactive_iter
 
@@ -126,105 +100,39 @@ class GeneralizedSEEM(nn.Module):
         enc_cfg = cfg['MODEL']['ENCODER']
         dec_cfg = cfg['MODEL']['DECODER']
 
-        # Loss parameters:
-        deep_supervision = dec_cfg['DEEP_SUPERVISION']
-        no_object_weight = dec_cfg['NO_OBJECT_WEIGHT']
-
-        # loss weights
-        loss_weights = {'mask': {'ce': dec_cfg['CLASS_WEIGHT'], 'dice': dec_cfg['DICE_WEIGHT'], 'bce': dec_cfg['MASK_WEIGHT']},
-                        'bbox': {'l1': dec_cfg['BBOX_WEIGHT'], 'giou': dec_cfg['GIOU_WEIGHT']},
-                        'spatial': {'ce': dec_cfg['SCLASS_WEIGHT'], 'dice': dec_cfg['SDICE_WEIGHT'], 'bce': dec_cfg['SMASK_WEIGHT']},
-                        'grounding': {'ce': dec_cfg['GCLASS_WEIGHT'], 'dice': dec_cfg['GDICE_WEIGHT'], 'bce': dec_cfg['GMASK_WEIGHT']},
-                        'openimage': {'ce': dec_cfg['OCLASS_WEIGHT'], 'dice': dec_cfg['ODICE_WEIGHT'], 'bce': dec_cfg['OMASK_WEIGHT']}}
-
         openimage_switch = {'grounding': dec_cfg['OPENIMAGE']['GROUNDING'].get('ENABLED', False),
                             'mask': dec_cfg['OPENIMAGE'].get('ENABLED', False)}
 
         task_switch = {'bbox': dec_cfg.get('DETECTION', False),
-                       'mask': dec_cfg['MASK'].get('ENABLED', True),
+                       'mask': dec_cfg.get('MASK', True),
                        'spatial': dec_cfg['SPATIAL'].get('ENABLED', False),
                        'grounding': dec_cfg['GROUNDING'].get('ENABLED', False),
-                       'openimage': openimage_switch}
+                       'openimage': openimage_switch,
+                       'visual': dec_cfg['VISUAL'].get('ENABLED', False),
+                       'audio': dec_cfg['AUDIO'].get('ENABLED', False)}
 
-        top_x_layers = {'mask': dec_cfg.get('TOP_MASK_LAYERS', 10),
-                        'grounding': dec_cfg.get('TOP_GROUNDING_LAYERS', 10),
-                        'openimage': dec_cfg.get('TOP_OPENIMAGE_LAYERS', 10),
-                        'spatial': dec_cfg.get('TOP_SPATIAL_LAYERS', 10)}
-
-        spatial_cost = {"class_weight": dec_cfg['COST_SPATIAL']['CLASS_WEIGHT'],
-                        "mask_weight": dec_cfg['COST_SPATIAL']['MASK_WEIGHT'],
-                        "dice_weight": dec_cfg['COST_SPATIAL']['DICE_WEIGHT']}
-
+        # build model
         extra = {'task_switch': task_switch}
         backbone = build_backbone(cfg)
         lang_encoder = build_language_encoder(cfg)        
         sem_seg_head = build_xdecoder_head(cfg, backbone.output_shape(), lang_encoder, extra=extra)
 
-        # building criterion
-        matcher = HungarianMatcher(
-            cost_class=loss_weights['mask']['ce'],
-            cost_mask=loss_weights['mask']['bce'],
-            cost_dice=loss_weights['mask']['dice'],
-            num_points=dec_cfg['TRAIN_NUM_POINTS'],
-            spatial_cost=spatial_cost,
-        )
-
-        # init weight dict and criterion loss functions.
-        losses = {'seg': [], 'openimage': []}
-        if task_switch['mask']:
-            losses['seg'] += ["labels", "masks"]
-        if task_switch['spatial']:
-            losses['seg'] += ["spatials"]
-        if task_switch['grounding']:
-            losses['seg'] += ["groundings"]
-        if task_switch['openimage']:
-            losses['openimage'] += ["labels_openimage", "masks"]
-        if task_switch['openimage']['grounding']:
-            losses['openimage'] += ["groundings"]
-
+        # Training Settings.
+        loss_weights = {}
+        matcher = None
+        losses = {}
         weight_dict = {}
-        for key, turn_on in task_switch.items():
-            if turn_on:
-                if isinstance(loss_weights[key], dict):
-                    # HACK it should support bbox in the future
-                    for key_, weight in loss_weights[key].items():
-                        weight_dict["loss_{}_{}_0".format(key, key_)] = weight # NOTE: hard code for segmentation that has multiple loss
-                else:
-                    weight_dict["loss_{}_0".format(key)] = loss_weights[key]
+        grd_weight = {}
+        top_x_layers = {}
+        criterion = None
+        train_dataset_name = None
+        phrase_prob = None
+        # Loss parameters:
+        deep_supervision = None
+        no_object_weight = None
 
-        # generate full weight dict and remove not computed layers. 
-        if deep_supervision:
-            dec_layers = dec_cfg['DEC_LAYERS']
-            aux_weight_dict = {}
-            for i in range(dec_layers - 1):
-                for k, v in weight_dict.items():
-                    if (i+1) > (top_x_layers[k.split('_')[1]] - 1):
-                        continue
-                    aux_weight_dict.update({k.replace('_0', f"_{i+1}"): v})
-            weight_dict.update(aux_weight_dict)
-
-        grd_weight = {'text': dec_cfg['GROUNDING']['TEXT_WEIGHT'], 'class': dec_cfg['GROUNDING']['CLASS_WEIGHT']}
-        # generate critenrion for loss function.
-        criterion = SetCriterion(
-            sem_seg_head.num_classes,
-            matcher=matcher,
-            weight_dict=weight_dict,
-            top_x_layers=top_x_layers,
-            eos_coef=no_object_weight,
-            losses=[],
-            num_points=dec_cfg['TRAIN_NUM_POINTS'],
-            oversample_ratio=dec_cfg['OVERSAMPLE_RATIO'],
-            importance_sample_ratio=dec_cfg['IMPORTANCE_SAMPLE_RATIO'],
-            grounding_weight=grd_weight,
-        )
-
-        # extra logistic
-        train_dataset_name = cfg['DATASETS']['TRAIN'][0] # HACK for only one training set.
-        train_max_iter = dec_cfg['SPATIAL'].get('MAX_ITER', 3)
-        phrase_prob = dec_cfg['CAPTION'].get('PHRASE_PROB', 0.5)
-        interactive_mode = cfg['STROKE_SAMPLER']['EVAL']['MODE']
-        interactive_iter = cfg['STROKE_SAMPLER']['EVAL']['MAX_ITER']
-
+        interactive_mode = 'best'
+        interactive_iter = 20
         dilation = 3
         dilation_kernel = torch.ones((1, 1, dilation, dilation), device=torch.cuda.current_device())
 
@@ -236,7 +144,7 @@ class GeneralizedSEEM(nn.Module):
             "num_queries": dec_cfg['NUM_OBJECT_QUERIES'],
             "object_mask_threshold": dec_cfg['TEST']['OBJECT_MASK_THRESHOLD'],
             "overlap_threshold": dec_cfg['TEST']['OVERLAP_THRESHOLD'],
-            "metadata": MetadataCatalog.get(cfg['DATASETS']['TRAIN'][0]),
+            "metadata": None,
             "size_divisibility": dec_cfg['SIZE_DIVISIBILITY'],
             "sem_seg_postprocess_before_inference": (
                 dec_cfg['TEST']['SEM_SEG_POSTPROCESSING_BEFORE_INFERENCE']
@@ -251,12 +159,11 @@ class GeneralizedSEEM(nn.Module):
             "semantic_on": dec_cfg['TEST']['SEMANTIC_ON'],
             "instance_on": dec_cfg['TEST']['INSTANCE_ON'],
             "panoptic_on": dec_cfg['TEST']['PANOPTIC_ON'],
-            "test_topk_per_image": cfg['TEST']['DETECTIONS_PER_IMAGE'],
+            "test_topk_per_image": cfg['MODEL']['DECODER']['TEST']['DETECTIONS_PER_IMAGE'],
             "train_dataset_name": train_dataset_name,
             "interactive_mode": interactive_mode,
             "interactive_iter": interactive_iter,
             "dilation_kernel": dilation_kernel,
-            "train_max_iter": train_max_iter,
         }
 
     @property
@@ -264,34 +171,9 @@ class GeneralizedSEEM(nn.Module):
         return self.pixel_mean.device
 
     def forward(self, batched_inputs, mode='default'):
-        """
-        Args:
-            batched_inputs: a list, batched outputs of :class:`DatasetMapper`.
-                Each item in the list contains the inputs for one image.
-                For now, each item in the list is a dict that contains:
-                   * "image": Tensor, image in (C, H, W) format.
-                   * "instances": per-region ground truth
-                   * Other information that's included in the original dicts, such as:
-                     "height", "width" (int): the output resolution of the model (may be different
-                     from input resolution), used in inference.
-        Returns:
-            list[dict]:
-                each dict has the results for one image. The dict contains the following keys:
-
-                * "sem_seg":
-                    A Tensor that represents the
-                    per-pixel segmentation prediced by the head.
-                    The prediction has shape KxHxW that represents the logits of
-                    each class for each pixel.
-                * "panoptic_seg":
-                    A tuple that represent panoptic output
-                    panoptic_seg (Tensor): of shape (height, width) where the values are ids for each segment.
-                    segments_info (list[dict]): Describe each segment in `panoptic_seg`.
-                        Each dict contains keys "id", "category_id", "isthing".
-        """
         if self.training:
             losses = {}
-            if self.task_switch['mask'] or self.task_switch['grounding'] or self.task_switch['spatial']:
+            if self.task_switch['mask']:
                 losses_seg = self.forward_seg(batched_inputs)
                 losses.update(losses_seg)
             if self.task_switch['openimage'] and self.task_switch['openimage']['mask']:
@@ -308,8 +190,6 @@ class GeneralizedSEEM(nn.Module):
         else:
             if mode == 'interactive':
                 return self.evaluate_interactive(batched_inputs)
-            elif mode == 'interactive_grounding':
-                return self.evaluate_interactive_grounding(batched_inputs)
             elif mode == 'grounding_spatial':
                 return self.evaluate_grounding_sptial(batched_inputs, mode)
             elif mode in ['grounding_phrasecut', 'grounding_refcoco']:
@@ -353,14 +233,13 @@ class GeneralizedSEEM(nn.Module):
         if self.task_switch['spatial']:
             with torch.no_grad():
                 # generate random integeter between [0,3]
-                rand_iter_num = random.randint(0, self.train_max_iter)
+                rand_iter_num = random.randint(0, 2)
                 for i in range(rand_iter_num):
                     outputs = self.sem_seg_head.predictor(multi_scale_features, mask_features, extra=extra, task='spatial')
                     extra.update(outputs)
                     extra.update(self.prepare_next_spaital_mask(extra, batched_inputs))
 
         outputs = self.sem_seg_head.predictor(multi_scale_features, mask_features, extra=extra, task='seg')
-
         extra = {'lang_logit': self.sem_seg_head.predictor.lang_encoder.logit_scale,
                  'class_embeddings': getattr(self.sem_seg_head.predictor.lang_encoder, '{}_text_embeddings'.format('default')),
                  'false_positive_mask': extra['false_positive_mask']}
@@ -370,6 +249,102 @@ class GeneralizedSEEM(nn.Module):
 
         del outputs
         return losses
+
+    def evaluate_demo(self, batched_inputs):
+        assert len(batched_inputs) == 1, "only support batch size equal to 1"
+        images = [x["image"].to(self.device) for x in batched_inputs]
+        images = [(x - self.pixel_mean) / self.pixel_std for x in images]
+        images = ImageList.from_tensors(images, self.size_divisibility)
+        img_bs = images.tensor.shape[0]
+
+        targets = targets_grounding = queries_grounding = None
+        features = self.backbone(images.tensor)
+        mask_features, transformer_encoder_features, multi_scale_features = self.sem_seg_head.pixel_decoder.forward_features(features)
+        image_sizes = [x["image"].shape[-2:] for x in batched_inputs]
+
+        extra = {}
+        if 'stroke' in batched_inputs[0]:
+            pos_masks = (batched_inputs[0]['stroke'].to(self.device)).unbind(0)
+            pos_masks = ImageList.from_tensors(pos_masks, self.size_divisibility).tensor.unbind(0)
+            neg_masks = (batched_inputs[0]['stroke'].to(self.device) & False).unbind(0)
+            neg_masks = ImageList.from_tensors(neg_masks, self.size_divisibility).tensor.unbind(0)
+            extra.update({'spatial_query_pos_mask': pos_masks, 'spatial_query_neg_mask': neg_masks})
+
+        if 'visual' in batched_inputs[0]:
+            extra.update(batched_inputs[0]['visual'])
+        
+        if 'text' in batched_inputs[0]:
+            gtext = self.sem_seg_head.predictor.lang_encoder.get_text_token_embeddings(batched_inputs[0]['text'], name='grounding', token=False, norm=False)
+            token_emb = gtext['token_emb']
+            tokens = gtext['tokens']
+            query_emb = token_emb[tokens['attention_mask'].bool()]
+            non_zero_query_mask = torch.zeros(query_emb[:,None].shape[:-1], dtype=torch.bool, device=query_emb.device)
+            extra['grounding_tokens'] = query_emb[:,None]
+            extra['grounding_nonzero_mask'] = non_zero_query_mask.t()
+            extra['grounding_class'] = gtext['class_emb']
+
+        if 'audio' in batched_inputs[0]:
+            gtext = self.sem_seg_head.predictor.lang_encoder.get_text_token_embeddings(batched_inputs[0]['audio'], name='grounding', token=False, norm=False)
+            token_emb = gtext['token_emb']
+            tokens = gtext['tokens']
+            query_emb = token_emb[tokens['attention_mask'].bool()]
+            non_zero_query_mask = torch.zeros(query_emb[:,None].shape[:-1], dtype=torch.bool, device=query_emb.device)
+            extra['audio_tokens'] = query_emb[:,None]
+            extra['audio_nonzero_mask'] = non_zero_query_mask.t()
+            extra['audio_class'] = gtext['class_emb']
+        
+        outputs = self.sem_seg_head.predictor(multi_scale_features, mask_features, target_queries=queries_grounding, extra=extra, task='demo')
+        return outputs, images.tensor.shape, extra
+
+        assert self.task_switch['spatial']
+        assert 'spatial_query' in batched_inputs[0]
+        assert len(batched_inputs) == 1, "only support batch size equal to 1"
+
+        images = [x["image"].to(self.device) for x in batched_inputs]
+        images = [(x - self.pixel_mean) / self.pixel_std for x in images]
+        images = ImageList.from_tensors(images, self.size_divisibility)
+        img_bs = images.tensor.shape[0]
+
+        targets = targets_grounding = queries_grounding = None
+        extra = {}
+
+        features = self.backbone(images.tensor)
+        mask_features, transformer_encoder_features, multi_scale_features = self.sem_seg_head.pixel_decoder.forward_features(features)
+
+        image_sizes = [x["image"].shape[-2:] for x in batched_inputs]
+        nm = len(batched_inputs[0]['spatial_query']['rand_shape'])
+        multi_scale_features = [m.repeat(nm,1,1,1) for m in multi_scale_features]
+        mask_features = mask_features.repeat(nm,1,1,1)
+
+        all_batch_shape_iou = []
+        pred_smask_pointer = None
+        prev_smask_pointer = None
+        pred_smask_all = None
+
+        query_index = self.sem_seg_head.predictor.query_index
+        assert self.interactive_mode == 'best'
+        pos_masks = (batched_inputs[0]['spatial_query']['rand_shape'].to(self.device)).unbind(0)
+        pos_masks = ImageList.from_tensors(pos_masks, self.size_divisibility).tensor.unbind(0)
+
+        neg_masks = (batched_inputs[0]['spatial_query']['rand_shape'].to(self.device) & False).unbind(0)
+        neg_masks = ImageList.from_tensors(neg_masks, self.size_divisibility).tensor.unbind(0)
+        extra.update({'spatial_query_pos_mask': pos_masks, 'spatial_query_neg_mask': neg_masks})
+
+        for i in range(self.interactive_iter):
+            outputs = self.sem_seg_head.predictor(multi_scale_features, mask_features, target_queries=queries_grounding, extra=extra, task='spatial')
+            extra.update(outputs)
+            pred_smask = F.interpolate(outputs['prev_mask'], images.tensor.shape[-2:], mode='bicubic')
+
+            s = image_sizes[0]
+            b = batched_inputs[0]
+            pred_smask_all = F.interpolate(pred_smask[:,:,:s[0],:s[1]], (b['height'], b['width']), mode='bicubic')[:,0].sigmoid() > 0.5
+            gt_smask = b['gt_masks_orisize']
+            all_batch_shape_iou += [get_iou(gt_smask, pred_smask_all)]
+            extra.update(self.prepare_next_spaital_mask(extra, batched_inputs))
+
+        all_batch_shape_iou = torch.stack(all_batch_shape_iou)
+        processed_results = [{"mask_iou": all_batch_shape_iou[:,i]} for i in range(len(all_batch_shape_iou[0]))]
+        return processed_results
 
     def evaluate(self, batched_inputs):
         images = [x["image"].to(self.device) for x in batched_inputs]
@@ -458,203 +433,29 @@ class GeneralizedSEEM(nn.Module):
         prev_smask_pointer = None
         pred_smask_all = None
 
-        # visualization code
-        # v_pred_mask = []
-        # v_pos_mask = []
-        # v_neg_mask = []
-        # v_gt_mask = batched_inputs[0]['spatial_query']['gt_masks'][0]
         query_index = self.sem_seg_head.predictor.query_index
-        if self.interactive_mode in ['best', 'best_random']:
-            pos_masks = (batched_inputs[0]['spatial_query']['rand_shape'].to(self.device)).unbind(0)
-            pos_masks = ImageList.from_tensors(pos_masks, self.size_divisibility).tensor.unbind(0)
+        assert self.interactive_mode == 'best'
+        pos_masks = (batched_inputs[0]['spatial_query']['rand_shape'].to(self.device)).unbind(0)
+        pos_masks = ImageList.from_tensors(pos_masks, self.size_divisibility).tensor.unbind(0)
 
-            neg_masks = (batched_inputs[0]['spatial_query']['rand_shape'].to(self.device) & False).unbind(0)
-            neg_masks = ImageList.from_tensors(neg_masks, self.size_divisibility).tensor.unbind(0)
-            extra.update({'spatial_query_pos_mask': pos_masks, 'spatial_query_neg_mask': neg_masks})
-        elif self.interactive_mode == 'random':
-            pos_masks = (batched_inputs[0]['spatial_query']['rand_shape'].to(self.device)==1).unbind(0)
-            pos_masks = ImageList.from_tensors(pos_masks, self.size_divisibility).tensor
-
-            neg_masks = (batched_inputs[0]['spatial_query']['rand_shape'].to(self.device)==-1).unbind(0)
-            neg_masks = ImageList.from_tensors(neg_masks, self.size_divisibility).tensor
-            extra.update({'spatial_query_pos_mask': pos_masks[:,0:1].unbind(), 'spatial_query_neg_mask': neg_masks[:,0:1].unbind()})
-        else:
-            assert False, "invalid interactive mode"
+        neg_masks = (batched_inputs[0]['spatial_query']['rand_shape'].to(self.device) & False).unbind(0)
+        neg_masks = ImageList.from_tensors(neg_masks, self.size_divisibility).tensor.unbind(0)
+        extra.update({'spatial_query_pos_mask': pos_masks, 'spatial_query_neg_mask': neg_masks})
 
         for i in range(self.interactive_iter):
-            # v_pos_mask += [extra['spatial_query_pos_mask'][0][0][:image_sizes[0][0],:image_sizes[0][1]].float().cpu().numpy()]
-            # v_neg_mask += [extra['spatial_query_neg_mask'][0][0][:image_sizes[0][0],:image_sizes[0][1]].float().cpu().numpy()]
             outputs = self.sem_seg_head.predictor(multi_scale_features, mask_features, target_queries=queries_grounding, extra=extra, task='spatial')
             extra.update(outputs)
-            pred_smask = F.interpolate(outputs['prev_mask'], images.tensor.shape[-2:], mode='bilinear')
-            # v_pred_mask += [(pred_smask[0,0][:image_sizes[0][0],:image_sizes[0][1]].sigmoid() > 0.5).float().cpu().numpy()]
+            pred_smask = F.interpolate(outputs['prev_mask'], images.tensor.shape[-2:], mode='bicubic')
 
             s = image_sizes[0]
             b = batched_inputs[0]
-            pred_smask_all = F.interpolate(pred_smask[:,:,:s[0],:s[1]], (b['height'], b['width']), mode='bilinear')[:,0].sigmoid() > 0.5
+            pred_smask_all = F.interpolate(pred_smask[:,:,:s[0],:s[1]], (b['height'], b['width']), mode='bicubic')[:,0].sigmoid() > 0.5
             gt_smask = b['gt_masks_orisize']
-            ious = get_iou(gt_smask, pred_smask_all)
-            all_batch_shape_iou += [ious]
-            if (ious > 0.9).sum() == len(ious):
-                all_batch_shape_iou += [ious for j in range(self.interactive_iter-i-1)]
-                break
-            if self.interactive_mode in ['best', 'best_random']:
-                extra.update(self.prepare_next_spaital_mask(extra, batched_inputs, mode=self.interactive_mode))
-            elif self.interactive_mode == 'random':
-                extra.update({'spatial_query_pos_mask': pos_masks[:,i+1:i+2].unbind(), 'spatial_query_neg_mask': neg_masks[:,i+1:i+2].unbind()})
-            else:
-                assert False, "invalid interactive mode"
+            all_batch_shape_iou += [get_iou(gt_smask, pred_smask_all)]
+            extra.update(self.prepare_next_spaital_mask(extra, batched_inputs))
+
         all_batch_shape_iou = torch.stack(all_batch_shape_iou)
         processed_results = [{"mask_iou": all_batch_shape_iou[:,i]} for i in range(len(all_batch_shape_iou[0]))]
-
-        return processed_results
-
-    def evaluate_interactive_single(self, batched_inputs, extra={}):
-        assert self.task_switch['spatial']
-        assert 'spatial_query' in batched_inputs[0]
-        assert len(batched_inputs) == 1, "only support batch size equal to 1"
-
-        images = [x["image"].to(self.device) for x in batched_inputs]
-        images = [(x - self.pixel_mean) / self.pixel_std for x in images]
-        images = ImageList.from_tensors(images, self.size_divisibility)
-        img_bs = images.tensor.shape[0]
-
-        targets = targets_grounding = queries_grounding = None
-
-        features = self.backbone(images.tensor)
-        mask_features, transformer_encoder_features, multi_scale_features = self.sem_seg_head.pixel_decoder.forward_features(features)
-
-        image_sizes = [x["image"].shape[-2:] for x in batched_inputs]
-        nm = len(batched_inputs[0]['spatial_query']['rand_shape'])
-        multi_scale_features = [m.repeat(nm,1,1,1) for m in multi_scale_features]
-        mask_features = mask_features.repeat(nm,1,1,1)
-
-        outputs = self.sem_seg_head.predictor(multi_scale_features, mask_features, target_queries=queries_grounding, extra=extra, task='spatial')
-        pred_smask = F.interpolate(outputs['prev_mask'], images.tensor.shape[-2:], mode='bicubic')
-
-        s = image_sizes[0]
-        b = batched_inputs[0]
-        pred_smask_ori = F.interpolate(pred_smask[:,:,:s[0],:s[1]], (b['height'], b['width']), mode='bicubic')[:,0].sigmoid() > 0.5
-        pred_smask_batch = pred_smask[:,:,:s[0],:s[1]].sigmoid() > 0.5
-        ious = []
-        if 'gt_masks_orisize' in b:
-            gt_smask = b['gt_masks_orisize'].to(pred_smask_ori.device)
-            ious = get_iou(gt_smask, pred_smask_ori)
-        processed_results = [{"mask_iou": ious, 'pred_mask_ori': pred_smask_ori, 'pred_mask_batch': pred_smask_batch}]
-        return processed_results
-
-    def evaluate_interactive_grounding(self, batched_inputs):
-        assert self.task_switch['spatial']
-        assert 'spatial_query' in batched_inputs[0]
-        assert len(batched_inputs) == 1, "only support batch size equal to 1"
-
-        images = [x["image"].to(self.device) for x in batched_inputs]
-        images = [(x - self.pixel_mean) / self.pixel_std for x in images]
-        images = ImageList.from_tensors(images, self.size_divisibility)
-        img_bs = images.tensor.shape[0]
-
-        targets = targets_grounding = queries_grounding = None
-        extra = {}
-
-        features = self.backbone(images.tensor)
-        mask_features, transformer_encoder_features, multi_scale_features = self.sem_seg_head.pixel_decoder.forward_features(features)
-
-        image_sizes = [x["image"].shape[-2:] for x in batched_inputs]
-        nm = len(batched_inputs[0]['spatial_query']['rand_shape'])
-        multi_scale_features = [m.repeat(nm,1,1,1) for m in multi_scale_features]
-        mask_features = mask_features.repeat(nm,1,1,1)
-
-        all_batch_shape_iou = []
-        pred_smask_pointer = None
-        prev_smask_pointer = None
-        pred_smask_all = None
-
-        # visualization code
-        # v_pred_mask = []
-        # v_pos_mask = []
-        # v_neg_mask = []
-        # v_gt_mask = batched_inputs[0]['spatial_query']['gt_masks'][0]
-        query_index = self.sem_seg_head.predictor.query_index
-        if self.interactive_mode in ['best', 'best_random']:
-            pos_masks = (batched_inputs[0]['spatial_query']['rand_shape'].to(self.device)).unbind(0)
-            pos_masks = ImageList.from_tensors(pos_masks, self.size_divisibility).tensor.unbind(0)
-
-            neg_masks = (batched_inputs[0]['spatial_query']['rand_shape'].to(self.device) & False).unbind(0)
-            neg_masks = ImageList.from_tensors(neg_masks, self.size_divisibility).tensor.unbind(0)
-            extra.update({'spatial_query_pos_mask': pos_masks, 'spatial_query_neg_mask': neg_masks})
-        elif self.interactive_mode == 'random':
-            pos_masks = (batched_inputs[0]['spatial_query']['rand_shape'].to(self.device)==1).unbind(0)
-            pos_masks = ImageList.from_tensors(pos_masks, self.size_divisibility).tensor
-
-            neg_masks = (batched_inputs[0]['spatial_query']['rand_shape'].to(self.device)==-1).unbind(0)
-            neg_masks = ImageList.from_tensors(neg_masks, self.size_divisibility).tensor
-            extra.update({'spatial_query_pos_mask': pos_masks[:,0:1].unbind(), 'spatial_query_neg_mask': neg_masks[:,0:1].unbind()})
-        else:
-            assert False, "invalid interactive mode"
-
-        grd_texts = batched_inputs[0]['classes']
-        gtext = self.sem_seg_head.predictor.lang_encoder.get_text_token_embeddings(grd_texts, name='grounding', token=False, norm=False)
-        token_emb = gtext['token_emb']
-        tokens = gtext['tokens']
-        query_emb = nn.utils.rnn.pad_sequence([_token_emb[_tokens.bool()] for _token_emb, _tokens in zip(token_emb, tokens['attention_mask'])], padding_value=-1)
-        non_zero_query_mask = (query_emb.sum(dim=-1) < 0)
-
-        extra['grounding_tokens'] = query_emb
-        extra['grounding_nonzero_mask'] = non_zero_query_mask.t()
-
-        for i in range(self.interactive_iter):
-            # v_pos_mask += [extra['spatial_query_pos_mask'][0][0][:image_sizes[0][0],:image_sizes[0][1]].float().cpu().numpy()]
-            # v_neg_mask += [extra['spatial_query_neg_mask'][0][0][:image_sizes[0][0],:image_sizes[0][1]].float().cpu().numpy()]
-            outputs = self.sem_seg_head.predictor(multi_scale_features, mask_features, target_queries=queries_grounding, extra=extra, task='spatial')
-            extra.update(outputs)
-            pred_smask = F.interpolate(outputs['prev_mask'], images.tensor.shape[-2:], mode='bilinear')
-            # v_pred_mask += [(pred_smask[0,0][:image_sizes[0][0],:image_sizes[0][1]].sigmoid() > 0.5).float().cpu().numpy()]
-
-            s = image_sizes[0]
-            b = batched_inputs[0]
-            pred_smask_all = F.interpolate(pred_smask[:,:,:s[0],:s[1]], (b['height'], b['width']), mode='bilinear')[:,0].sigmoid() > 0.5
-            gt_smask = b['gt_masks_orisize']
-            ious = get_iou(gt_smask, pred_smask_all)
-            all_batch_shape_iou += [ious]
-            if (ious > 0.9).sum() == len(ious):
-                all_batch_shape_iou += [ious for j in range(self.interactive_iter-i-1)]
-                break
-            if self.interactive_mode in ['best', 'best_random']:
-                extra.update(self.prepare_next_spaital_mask(extra, batched_inputs, mode=self.interactive_mode))
-            elif self.interactive_mode == 'random':
-                extra.update({'spatial_query_pos_mask': pos_masks[:,i+1:i+2].unbind(), 'spatial_query_neg_mask': neg_masks[:,i+1:i+2].unbind()})
-            else:
-                assert False, "invalid interactive mode"
-        all_batch_shape_iou = torch.stack(all_batch_shape_iou)
-        processed_results = [{"mask_iou": all_batch_shape_iou[:,i]} for i in range(len(all_batch_shape_iou[0]))]
-
-        # visualization
-        # VL.step()
-        # import cv2
-        # v_masks = []
-        # v_pos_masks = []
-        # v_neg_masks = []
-        # txt = []
-
-        # img = batched_inputs[0]['image'].permute(1,2,0).cpu().numpy()
-        # mask_img = VL.overlay_single_mask_to_image(img[:,:,::-1], v_gt_mask.cpu().float().numpy())
-        # acc_pos_mask = np.zeros(v_pos_mask[0].shape)
-        # acc_neg_mask = np.zeros(v_neg_mask[0].shape)
-        # for x,y,z,iou in zip(v_pos_mask, v_neg_mask, v_pred_mask, all_batch_shape_iou):
-        #     # dilate x,y
-        #     x = cv2.dilate(x, np.ones((5,5), np.uint8), iterations=3)
-        #     y = cv2.dilate(y, np.ones((5,5), np.uint8), iterations=3)
-        #     acc_pos_mask += x
-        #     acc_neg_mask += y
-
-        #     v_masks += [z]
-        #     v_pos_masks += [acc_pos_mask.clip(0,1)]
-        #     v_neg_masks += [acc_neg_mask.clip(0,1)]
-        #     txt += ["pred_{}".format(str(iou[0].item())[0:5])]
-
-        # VL.add_image(img[:,:,::-1])
-        # VL.insert(mask_img, "gt_mask")
-        # VL.overlay_obj_mask_to_image_withposneg(img[:,:,::-1], v_masks, v_pos_masks, v_neg_masks, txt, max_len=20)
         return processed_results
 
     def evaluate_referring_image(self, batched_inputs, extra={}):
@@ -819,7 +620,7 @@ class GeneralizedSEEM(nn.Module):
                 assert len(images.tensor) == 1, "grounding evaluation only support single batch size now"
                 features = self.backbone(images.tensor)
                 outputs = self.sem_seg_head(features, extra=extra, task='grounding_eval')
-                
+
                 pred_gmasks = outputs['pred_gmasks'][idx]
                 v_emb = outputs['pred_gtexts'][idx]
                 t_emb = gtext['class_emb']
@@ -832,8 +633,6 @@ class GeneralizedSEEM(nn.Module):
                 
                 matched_id = out_prob.max(0)[1]
                 grd_masks += [pred_gmasks[matched_id,:,:]]
-                # grd_masks += [outputs['prev_mask'][0]]
-
             mask_pred_results += [torch.cat(grd_masks)]
 
         # comment for multi object inference.
@@ -955,7 +754,7 @@ class GeneralizedSEEM(nn.Module):
             new_targets.append(target_dict)
         return new_targets
 
-    def prepare_next_spaital_mask(self, outputs, batched_inputs, mode='best'):
+    def prepare_next_spaital_mask(self, outputs, batched_inputs):
         gt_masks = [batched_inputs[i]['spatial_query']['gt_masks'] for i in range(len(batched_inputs))]
         if self.training:
             gt_masks = ImageList.from_tensors(gt_masks, self.size_divisibility).tensor
@@ -978,12 +777,9 @@ class GeneralizedSEEM(nn.Module):
         select_mask = torch.stack([fn[i] if is_postive[i] else fp[i] for i in range(len(fn))])
 
         # conv implementation
-        n,_,h,w = select_mask.shape
+        n,_,h,w=select_mask.shape
         mask_dt = (distance_transform((~F.pad(select_mask, pad=(1, 1, 1, 1), mode='constant', value=0)).float())[:,:,1:-1,1:-1]).reshape(n,-1)
-        if mode == 'best':
-            max_xy_idx = torch.stack([torch.arange(n), mask_dt.max(dim=-1)[1].cpu()]).tolist()
-        elif mode == 'best_random':
-            max_xy_idx = torch.stack([torch.arange(n), torch.cat([(mask_dt[i] > 0).nonzero()[torch.randint(0, len((mask_dt[i] > 0).nonzero()), (1,))][0] for i in range(len(mask_dt))]).cpu()]).tolist()
+        max_xy_idx = torch.stack([torch.arange(n), mask_dt.max(dim=-1)[1].cpu()]).tolist()
         next_mask = torch.zeros(gt_masks.shape, device=torch.cuda.current_device()).bool()
         next_mask = next_mask.view(n,-1)
         next_mask[max_xy_idx] = True
@@ -1120,39 +916,6 @@ class GeneralizedSEEM(nn.Module):
         result.pred_classes = labels_per_image
 
         return result
-
-    def prepare_targets4query(self, targets, images, topk=5):
-        h_pad, w_pad = images.tensor.shape[-2:]
-        new_targets = []
-        new_queries = []
-        for targets_per_image in targets:
-            # we randomly sample maximally topk concepts
-            unique_target_classes = [k for k in set(targets_per_image.gt_classes.tolist())]
-            selected_target_classes = random.sample(unique_target_classes, min(topk, len(unique_target_classes)))
-            new_targets_per_image = []
-            new_queries_per_image = []
-            for clss in selected_target_classes:
-                indices = (targets_per_image.gt_classes == clss).nonzero().view(-1)
-                # pad gt
-                gt_masks = targets_per_image.gt_masks[indices]
-                padded_masks = torch.zeros((gt_masks.shape[0], h_pad, w_pad), dtype=gt_masks.dtype, device=gt_masks.device)
-                padded_masks[:, : gt_masks.shape[1], : gt_masks.shape[2]] = gt_masks
-
-                # convert class into concept name and then token seq
-                self.sem_seg_head.predictor.lang_encoder.get_text_embeddings([COCO_PANOPTIC_CLASSES[clss]], name='grounding')
-                query = getattr(self.sem_seg_head.predictor.lang_encoder, 'grounding_text_embeddings')
-
-                new_targets.append(
-                    {
-                        "labels": targets_per_image.gt_classes[indices],
-                        "masks": padded_masks,
-                    }
-                )
-                new_queries_per_image.append(query)
-            new_queries.append(new_queries_per_image)
-
-        return new_targets, new_queries
-
 
 
 @register_model

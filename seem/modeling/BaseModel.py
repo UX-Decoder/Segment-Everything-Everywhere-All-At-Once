@@ -4,7 +4,7 @@ import logging
 import torch
 import torch.nn as nn
 
-from utils.model import align_and_update_state_dicts
+from seem.utils.model import align_and_update_state_dicts
 
 logger = logging.getLogger(__name__)
 

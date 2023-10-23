@@ -11,8 +11,8 @@ from torch import nn
 from timm.models.layers import DropPath, trunc_normal_
 
 from .build import register_lang_encoder
-from utils.distributed import is_main_process
-from utils.model import register_norm_module
+from seem.utils.distributed import is_main_process
+from seem.utils.model import register_norm_module
 
 logger = logging.getLogger(__name__)
 
