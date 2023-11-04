@@ -11,6 +11,8 @@ A brief introduction of all the generic and interactive segmentation tasks we ca
 ![SEEM design](assets/images/teaser_new.png?raw=true)
 
 ## :rocket: Updates
+* **[2023.11.2]**  SEEM is applied in [LLaVA-Interactive](https://llava-vl.github.io/llava-interactive/): an all-in-one demo for Image Chat, Segmentation, Generation and Editing. Experience the future of interactive image editing with visual chat.
+[[Project Page](https://llava-vl.github.io/llava-interactive/)] [[Demo](https://6dd3-20-163-117-69.ngrok-free.app/)] [[Code](https://github.com/LLaVA-VL/LLaVA-Interactive-Demo)] [[Paper](https://arxiv.org/abs/2311.00571)]
 * **[2023.10.10]** We release the training [log](https://huggingface.co/xdecoder/SEEM/raw/main/seem_v1_focall_unicl.log) for SEEM-Large-v1 and [log](https://huggingface.co/xdecoder/SEEM/raw/main/seem_v1_focalt_unicl.log) for SEEM-Tiny-v1!
 * **[2023.10.04]** We are excited to release :white_check_mark: [training/evaluation/demo code](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/edit/v1.0/README.md#bookmark_tabs-catalog), :white_check_mark: [new checkpoints](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/edit/v1.0/README.md#bookmark_tabs-catalog), and :white_check_mark: [comprehensive readmes](https://github.com/UX-Decoder/Segment-Everything-Everywhere-All-At-Once/edit/v1.0/README.md#bookmark_tabs-catalog) for ***both X-Decoder and SEEM***!
 * **[2023.09.25]** Our work has been accepted to NeurIPS 2023!
