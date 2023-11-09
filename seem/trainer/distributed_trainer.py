@@ -7,7 +7,6 @@
 
 import os
 import logging
-from mpi4py import MPI
 
 import torch
 

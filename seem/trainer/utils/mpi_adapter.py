@@ -1,5 +1,4 @@
 import logging
-from mpi4py import MPI
 import os
 import re
 import subprocess

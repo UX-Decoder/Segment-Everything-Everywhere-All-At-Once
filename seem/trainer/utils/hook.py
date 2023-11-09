@@ -15,7 +15,6 @@ def _global_except_hook(exctype, value, traceback):
             sys.__excepthook__(exctype, value, traceback)
 
     finally:
-        import mpi4py.MPI
         rank = mpi4py.MPI.COMM_WORLD.Get_rank()
         logger.warning("******************************************")
         logger.warning("DefaultTrainer:")
@@ -25,7 +24,6 @@ def _global_except_hook(exctype, value, traceback):
         logging.shutdown()
 
         try:
-            import mpi4py.MPI
             mpi4py.MPI.COMM_WORLD.Abort(1)
         except Exception as e:
             # Something is completely broken...

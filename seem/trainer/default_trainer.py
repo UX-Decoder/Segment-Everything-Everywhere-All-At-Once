@@ -25,7 +25,6 @@ import torch.optim as optim
 import torch.optim.lr_scheduler as lr_scheduler
 from torch.utils.data import DataLoader
 from torch.utils.data.distributed import DistributedSampler
-from mpi4py import MPI
 from infinibatch import iterators
 
 from .distributed_trainer import DistributedTrainer

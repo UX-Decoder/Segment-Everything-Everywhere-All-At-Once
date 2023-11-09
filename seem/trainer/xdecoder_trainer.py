@@ -13,7 +13,6 @@ import copy
 import itertools
 from typing import Any, Dict, List, Set, Union
 from datetime import datetime
-from mpi4py import MPI
 
 import numpy as np
 import torch
