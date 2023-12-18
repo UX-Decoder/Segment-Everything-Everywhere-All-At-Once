@@ -1,4 +1,4 @@
-# 👀*SEEM:* Segment Everything Everywhere All at Once
+# 👀*SEEM:* Segment Everything Everywhere All at Once 
 
 :grapes: \[[Read our arXiv Paper](https://arxiv.org/pdf/2304.06718.pdf)\] &nbsp; :apple: \[[Try our Demo](http://semantic-sam.xyzou.net:6090/)\] 
 
